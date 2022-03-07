@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgis/postgis
+    environment:
+      POSTGRES_DB: modgen
+      POSTGRES_USER: modgen
+      POSTGRES_PASSWORD: modgen
+    ports:
+    - 5432:5432
+    
+  keycloakdb:
+    image: postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+
+  keycloak:
+    image: jboss/keycloak:13.0.1
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: keycloakdb
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      PROXY_ADDRESS_FORWARDING: 'true'
+      JAVA_OPTS_APPEND: -Dmail.smtps.timeout="60000" -Dmail.smtps.connectiontimeout="60000" -Dmail.smtp.timeout="60000" -Dmail.smtp.connectiontimeout="60000" -Dmail.smtp.writetimeout="60000" -Dmail.smtps.writetimeout="60000" -Dmail.smtp.writetimeout=60000 -Dmail.smtps.writetimeout=60000
+    ports:
+        - 8080:8080
+    depends_on:
+        - keycloakdb
+        
+        

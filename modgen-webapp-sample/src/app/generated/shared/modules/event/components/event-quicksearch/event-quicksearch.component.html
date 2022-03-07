@@ -1,0 +1,7 @@
+<form [formGroup]="form" (keydown.enter)="onSearch()">
+  <mat-form-field [style.width.%]="100" appearance="standard">
+    <mat-label>{{title || 'Search Event'}}</mat-label>
+    <input matInput placeholder="Event keyword" formControlName="quickSearchQuery"/>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</form>  

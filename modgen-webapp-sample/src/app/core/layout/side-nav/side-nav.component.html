@@ -1,0 +1,36 @@
+<div class="side-nav-container">
+    <div class="toolbar-container">
+        <div class="clickable">
+            <mat-icon class="menu-button" (click)="drawer.toggle()">menu</mat-icon>
+        </div>
+        <div class="user-icon">
+            <mat-icon class="customIconSize">person</mat-icon>
+        </div>
+    </div>
+
+    <div class="mat-drawer-inner-container ">
+        <mat-drawer-container class="example-container sidenav .sidenav" hasBackdrop="true">
+            <mat-drawer #drawer mode="over" class="sidenav">
+                <div class="connection">
+                    <div class="logout clickable" mat-icon-button="" (click)="logout()">
+                        <div class="user-info">
+                            <span class="name">{{firstname}} {{lastname}}</span>
+                            <span class="designation">{{email}}</span>
+                        </div>
+                        <span class="mat-button-wrapper">
+              <mat-icon [ngStyle]="{'color':'white'}">power_settings_new</mat-icon>
+            </span>
+                        <span class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></span>
+                        <span class="mat-button-focus-overlay"></span>
+                    </div>
+                </div>
+                <div class="side-menu">
+                    <menu (toggleSideNav)="drawer.toggle()" [items]="menuList">
+                    </menu>
+                </div>
+            </mat-drawer>
+            <mat-drawer-content>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
+</div>

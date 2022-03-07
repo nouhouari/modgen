@@ -1,0 +1,21 @@
+<mat-toolbar class="mat-toolbar mat-toolbar-single-row px-4" id="header">
+    <div class="header-item" style="display: flex;align-items: center">
+        <mat-icon color="accent" class="mr-1">home</mat-icon>
+        <div class="breadcrum-hz">
+            <xng-breadcrumb>
+                <ng-container *xngBreadcrumbItem="let breadcrumb">
+                    <ng-container> {{ breadcrumb }} </ng-container>
+                </ng-container>
+            </xng-breadcrumb>
+        </div>
+    </div>
+    <!-- <div class="search-box">
+    <form class="search-form" role="search">
+      <button class="btn search-btn" type="button"><i class="fa fa-search"></i></button>
+      <input type="text" class="form-control search-field" placeholder="Search">
+    </form>
+  </div> -->
+    <!--<span class="language-select">
+    {{language.value}} - AR
+  </span>-->
+</mat-toolbar>

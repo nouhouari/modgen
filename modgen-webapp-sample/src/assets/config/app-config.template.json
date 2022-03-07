@@ -1,0 +1,4 @@
+{
+  "keycloakUrl": "${KEYCLOAK_URL}",
+  "tableauUrl": "${TABLEAU_URL}"
+}

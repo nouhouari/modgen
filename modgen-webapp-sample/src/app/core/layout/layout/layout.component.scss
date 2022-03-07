@@ -1,0 +1,16 @@
+.app-container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    #content {
+        width: 100%;
+        padding-bottom: 20px;
+        background-color: white;
+    }
+    .content2 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

@@ -1,0 +1,10 @@
+<div *ngxPermissionsOnly="['SEARCH_EVENT']">
+  <h4>Search Event</h4>
+  <form [formGroup]="form">
+        <mat-form-field appearance="standard">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" id="name" formControlName="name" />
+        </mat-form-field>
+      <button mat-flat-button color="primary" id="event_clear_button" (click)="onClear()">Clear</button>&nbsp;<button  mat-flat-button color="primary" id="event_search_button" (click)="onSearch()">Search</button> 
+  </form>
+</div>

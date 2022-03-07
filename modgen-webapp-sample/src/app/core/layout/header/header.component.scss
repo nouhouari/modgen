@@ -1,0 +1,85 @@
+/* Display list items side by side */
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+
+/* Add a slash symbol (/) before/behind each list item */
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+
+/* Add a color to all links inside the list */
+
+ul.breadcrumb li a {
+    color: #0087c8;
+    text-decoration: none;
+}
+
+
+/* Add a color on mouse-over */
+
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+.search-box {
+    width: 40%;
+    display: flex;
+}
+
+.search-form {
+    width: 100%;
+    position: relative;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #b4b4b557;
+    border: 1px solid #f1f3f4;
+    border-radius: 2px;
+    .search-field {
+        outline: none;
+        background: transparent;
+        border: none;
+        width: 90%;
+        height: 100%;
+        &:focus {
+            background: white;
+        }
+    }
+    .search-btn {
+        border: none;
+        width: 5%;
+        background: transparent;
+    }
+    &:focus,
+    &:focus-within {
+        background: white;
+    }
+}
+
+.language-select {
+    width: 4rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: bold;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    padding: 0;
+}
+
+.breadcrum-hz {
+    margin-left: 9px;
+    margin-top: 5px;
+}

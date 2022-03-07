@@ -1,0 +1,8 @@
+<div class="row mt-5" *ngIf="event">
+    <div class="col col-md-6 col-lg-4 offset-lg-2">
+        <app-event-edit title="Update Event" [data]="event" (save)="onSave($event)"></app-event-edit>
+    </div>
+    <div class="col col-lg-4">
+        <app-event-map (clickOnMap)="onClickMap($event)" [events]="[event]"></app-event-map>
+    </div>
+</div>

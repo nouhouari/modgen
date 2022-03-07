@@ -1,0 +1,11 @@
+{
+  "apiUrl": "/api",
+  "keycloakUrl": "http://localhost:8080/auth",
+  "tableauUrl": "/tableau/t/MY-DEV/views/Horizon_demo_DEV/HorizonBI",
+  "defaultDistance": 5,
+  "maximumDistance": 100,
+  "defaultCoordinates": {
+    "latitude": 14.5995,
+    "longitude": 120.9842
+  }
+}

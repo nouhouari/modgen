@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="submit()" *ngxPermissionsOnly="['SAVE_EVENT']">
+    <mat-form-field>
+        <input matInput placeholder="Name" id="event_Name" name="Name" formControlName="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Description" id="event_Description" name="Description" formControlName="description">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Location" id="event_Location" name="Location" formControlName="location">
+    </mat-form-field>
+    <br>
+    <!-- Extension -->
+    <div *ngIf="schema">
+        <label>Extension</label><br>
+        <json-schema-form #event_extension [loadExternalAssets]=true framework="material-design" [schema]="schema.schema" [layout]="schema.layout" [options]="options" (isValid)="isExtensionValid($event)">
+        </json-schema-form>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!form.valid || (!extensionValid && schema)">SUBMIT</button><br>
+</form>

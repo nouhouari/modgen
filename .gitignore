@@ -1,0 +1,7 @@
+**/.settings/
+modgen-backend-starter/target/
+modgen-core/target/
+modgen-doc/target/
+modgen-jpa/target/
+modgen-maven-plugin/target/
+modgen-backend-starter/src/main/java/com/sicpa/springbootsample/generated/

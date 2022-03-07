@@ -1,0 +1,16 @@
+<config>
+	<context-values>
+		<resource path="src/main/resources/templates/jpa/entity/jpa_entity_sql.ftl">
+			<value key="entities" object-class="java.util.ArrayList" item-class="fr.hin.modelgenerator.model.ObjectMetaModel"/>
+			<value key="attribute" object-class="fr.hin.modelgenerator.model.Attribute"/>
+		</resource>
+		<resource path="src/main/resources/templates/typescript/list/component.html.ftl">
+			<value key="attribute" object-class="fr.hin.modelgenerator.model.Attribute"/>
+		</resource>
+		<resource path="src/main/resources/templates/typescript/create/component.ts.ftl">
+			<value key="attribute" object-class="fr.hin.modelgenerator.model.Attribute"/>
+		</resource>
+	</context-values>
+	<macro-library>
+	</macro-library>
+</config>

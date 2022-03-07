@@ -1,0 +1,56 @@
+<!-- <h2>Keycloak/Angular public/private spaces</h2>
+
+<ng-container *ngIf="userProfile">
+    <h2>User information</h2>
+    <table style="border: 1px solid lightgray;">
+        <tr *ngIf="userProfile.username">
+            <th>Username</th>
+            <td>{{ userProfile.username }}</td>
+        </tr>
+        <tr *ngIf="userProfile.firstName">
+            <th>First name</th>
+            <td>{{ userProfile.firstName }}</td>
+        </tr>
+        <tr *ngIf="userProfile.lastName">
+            <th>First name</th>
+            <td>{{ userProfile.lastName }}</td>
+        </tr>
+        <tr *ngIf="userProfile.email">
+            <th>E-mail</th>
+            <td>{{ userProfile.email }}</td>
+        </tr>
+        <tr>
+            <th>E-mail verified</th>
+            <td>{{ userProfile.emailVerified ? 'Yes' : 'No' }}</td>
+        </tr>
+    </table>
+</ng-container>
+-->
+<div fxLayout="column" fxLayoutAlign="center center">
+
+    <p *ngIf="logged">
+        <button (click)="logout()">Logout</button>
+    </p>
+
+    <p *ngIf="!logged">
+        <button (click)="login()">Login</button>
+    </p>
+
+    <div *ngxPermissionsOnly="['ADMIN']">
+        <h2>I'm an ADMIN</h2>
+    </div>
+
+    <div *ngxPermissionsOnly="['USER']">
+        <h2>I'm a USER</h2>
+    </div>
+
+    <p>
+        <a [routerLink]="['/event']">Go to event<mat-icon>home</mat-icon> </a>
+    </p>
+</div>
+
+<!-- <p>
+    <a [routerLink]="['/public']">Go to public</a> | <a [routerLink]="['/public/p2']">Go to public 2</a> | <a [routerLink]="['/private']">Go to private</a> | <a [routerLink]="['/private/admin']">Go to private Admin [SUPER-ADMIN]</a>
+</p> -->
+
+<router-outlet></router-outlet>

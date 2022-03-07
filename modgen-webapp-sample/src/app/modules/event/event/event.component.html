@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col col-md-4 col-xl-3">
+        <app-event-quicksearch title="Quick Search" (criteria)="onSearch($event)"></app-event-quicksearch>
+    </div>
+    <div class="col py-4 w-100 align-right" *ngxPermissionsOnly="['SAVE_EVENT']">
+        <div>
+            <button mat-flat-button color="accent" routerLink="/new">
+        <mat-icon>add</mat-icon>
+        New Event
+      </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-md-4 col-xl-3 mb-4">
+        <app-event-search title="Search Event" (criteria)="onSearch($event)" (clear)="onClear($event)"></app-event-search>
+    </div>
+    <div class="col">
+        <app-event-list [searchCriteria]="searchCriteria" (data)="onDataSource($event)" (update)="onEditRecord($event)" (select)="onSelectRecord($event)" (view)="onView($event)"></app-event-list>
+    </div>
+</div>
