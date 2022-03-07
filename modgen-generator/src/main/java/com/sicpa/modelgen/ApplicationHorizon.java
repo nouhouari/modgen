@@ -66,7 +66,7 @@ public class ApplicationHorizon extends AbstractGeneratorEngine {
     String apiOutputDir = null;
     String frontendOutputDir = null;
     String componentOutputDir = null;
-    String dartOutputDir = "../../horizon-dart-model";
+    String dartOutputDir = "../modgen_model_lib";
     String serviceOutputDir = "../modgen-spring-boot-sample";
     String frontendAngular4OutputDir = "../modgen-webapp-sample/";
 

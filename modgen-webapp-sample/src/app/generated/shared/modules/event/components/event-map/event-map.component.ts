@@ -54,22 +54,20 @@ export class EventMapComponent implements AfterViewInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {  
-    
+  ngOnChanges(changes: SimpleChanges): void {    
     this.ngxPermissionService
-    .hasPermission(['READ_EVENT', 'LIST_EVENT'])
-    .then((authorized) => {
-      
-      if (authorized) {
-        if (changes.events) {
-          this.events = changes.events.currentValue;
-          this.removeMarker();
-          this.addGeoJSonMarker();
+      .hasPermission(['READ_EVENT', 'LIST_EVENT'])
+      .then((authorized) => {
+        if (authorized) {
+          if (changes.events) {
+            this.events = changes.events.currentValue;
+            this.removeMarker();
+            this.addGeoJSonMarker();
+          }
         }
-      }
-    });
+      });
   }
-  
+
   /**
    * Add a list of event in the map.
    */
@@ -80,12 +78,11 @@ export class EventMapComponent implements AfterViewInit, OnChanges {
           var geojsonPoint: geojson.Point = event.location;
           this.addMarker(geojsonPoint);
         }
-        )
-      }
+      )
     }
-    
-    addMarker(geojsonPoint: geojson.Point) {
-    console.log("Update map", geojsonPoint);
+  }
+
+  addMarker(geojsonPoint: geojson.Point) {
     if (!geojsonPoint || !geojsonPoint.coordinates)
       return;
     const marker = L.geoJSON(geojsonPoint);

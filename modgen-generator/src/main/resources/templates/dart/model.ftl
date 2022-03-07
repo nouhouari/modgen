@@ -72,7 +72,9 @@ class ${entity.name} {
 
   ${entity.name}(
       {
+      <#if entity.hasOneOfAnnotation(["SYNCH_SERVER", "SYNCH_CLIENT"])>
       this.modifiedDate,
+      </#if>
       <#list entity.attributes as attribute>
       this.${attribute.name}<#sep>,</#sep>
       </#list>

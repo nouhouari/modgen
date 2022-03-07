@@ -20,7 +20,7 @@ import 'dart:convert';
 
 import '../api/${entity.name?lower_case}.api.dart';
 import '../model/dao/database.dart';
-import 'package:moor/moor.dart' as moor;
+import 'package:drift/drift.dart' as drift;
 <#if entity.hasAnnotation("SYNCH_SERVER")>
 <#list entity.attributes as attribute>
 <#if attribute.enumerate>
@@ -46,19 +46,19 @@ start${entity.name}ServerSynching(int seconds, AppDatabase db, ${entity.name}Api
               ${entity.name?lower_case}s.forEach((element) {
                 db.add${entity.name}(new ${entity.name}Companion(
                     lastUpdateTimestamp:
-                        moor.Value(element.modifiedDate!),
+                        drift.Value(element.modifiedDate!),
                     <#list entity.attributes as attribute>
                     <#if !attribute.reference>
                     <#if attribute.enumerate>
                     //Enum
                     ${attribute.name}: (element.${attribute.name} != null)
-                        ? moor.Value(EnumToString.convertToString(
+                        ? drift.Value(EnumToString.convertToString(
                             element.${attribute.name}))
-                        : moor.Value.absent()<#sep>,</#sep>
+                        : drift.Value.absent()<#sep>,</#sep>
                     <#elseif attribute.type == 'String' && attribute.hasAnnotation('LOCATION')>
-                    ${attribute.name}: (element.${attribute.name} != null)?moor.Value(jsonEncode(element.${attribute.name})):moor.Value.absent()<#sep>,</#sep>    
+                    ${attribute.name}: (element.${attribute.name} != null)?drift.Value(jsonEncode(element.${attribute.name})):drift.Value.absent()<#sep>,</#sep>    
                     <#else>
-                    ${attribute.name}: moor.Value(element.${attribute.name})<#sep>,</#sep>
+                    ${attribute.name}: drift.Value(element.${attribute.name})<#sep>,</#sep>
                     </#if>
                     <#else>
                     // ${attribute.name}
@@ -80,19 +80,19 @@ start${entity.name}ServerSynching(int seconds, AppDatabase db, ${entity.name}Api
                 ${entity.name?lower_case}s.forEach((element) {
                   db.add${entity.name}(new ${entity.name}Companion(
                       lastUpdateTimestamp:
-                        moor.Value(element.modifiedDate!),
+                        drift.Value(element.modifiedDate!),
                     <#list entity.attributes as attribute>
                     <#if !attribute.reference>
                     <#if attribute.enumerate>
                     //Enum
                     ${attribute.name}: (element.${attribute.name} != null)
-                        ? moor.Value(EnumToString.convertToString(
+                        ? drift.Value(EnumToString.convertToString(
                             element.${attribute.name}))
-                        : moor.Value.absent()<#sep>,</#sep>
+                        : drift.Value.absent()<#sep>,</#sep>
                     <#elseif attribute.type == 'String' && attribute.hasAnnotation('LOCATION')>
-                    ${attribute.name}: (element.${attribute.name} != null)?moor.Value(jsonEncode(element.${attribute.name})):moor.Value.absent()<#sep>,</#sep>    
+                    ${attribute.name}: (element.${attribute.name} != null)?drift.Value(jsonEncode(element.${attribute.name})):drift.Value.absent()<#sep>,</#sep>    
                     <#else>
-                    ${attribute.name}: moor.Value(element.${attribute.name})<#sep>,</#sep>
+                    ${attribute.name}: drift.Value(element.${attribute.name})<#sep>,</#sep>
                     </#if>
                     <#else>
                     // ${attribute.name}
@@ -122,10 +122,10 @@ start${entity.name}ClientSynching(int seconds, AppDatabase db, ${entity.name}Api
             api.save${entity.name}(${entity.name?lower_case}).then(
                 (value) => {
                       db.update${entity.name}(${entity.name}Companion.insert(
-                          id: moor.Value(${entity.name?lower_case}.${entity.primaryAttribute.name}),
+                          id: drift.Value(${entity.name?lower_case}.${entity.primaryAttribute.name}),
                           lastUpdateTimestamp:
                               DateTime.now().millisecondsSinceEpoch,
-                          synchronized: moor.Value(true)))
+                          synchronized: const drift.Value(true)))
                     },
                 onError: (e) => print('Error synching ${entity.name}.'));
           })

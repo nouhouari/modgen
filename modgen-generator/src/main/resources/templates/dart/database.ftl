@@ -40,7 +40,7 @@
 /// }
 
 import 'dart:convert';
-import 'package:moor/moor.dart';
+import 'package:drift/drift.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import '../../model/common/extension.dart';
 import '../../model/${entity.name?lower_case}.dart' as ${entity.name?lower_case}DTO;
@@ -67,15 +67,17 @@ part 'database.g.dart';
 /// ${entity.name} database model
 class ${entity.name} extends Table {
  <#list entity.attributes as attribute>
+ // ${attribute}
  <#if attribute.type == "String" || attribute.type == "Character" || attribute.enumerate>
   TextColumn get ${attribute.name} => text().nullable()();	   
   <#elseif attribute.type == "Date">
   DateTimeColumn get ${attribute.name} => dateTime().nullable()();
-  <#elseif attribute.type == "Byte" 
-	   || attribute.type == "Short" 
-	   || attribute.type == "Integer" 
-	   || attribute.type == "Long">
-  IntColumn get ${attribute.name} => integer()();	   
+  <#elseif 
+          attribute.type == "Byte" ||  attribute.type == "byte"
+	   || attribute.type == "Short" || attribute.type == "short"
+	   || attribute.type == "Integer" || attribute.type == "int"
+	   || attribute.type == "Long" || attribute.type == "long">
+  IntColumn get ${attribute.name} => integer().nullable()();	   
   <#elseif attribute.type == "Float"
 	   || attribute.type == "Double">
   RealColumn get ${attribute.name} => real()(); 	   
@@ -102,58 +104,58 @@ class ${entity.name} extends Table {
 }
 
 </#list>
-@UseMoor(tables: [<#list entities as entity>${entity.name}<#sep>,</#sep></#list>])
+@DriftDatabase(tables: [<#list entities as entity>${entity.name}<#sep>,</#sep></#list>])
 class AppDatabase extends _$AppDatabase {
   AppDatabase(LazyDatabase db) : super(db);
 
   <#list entities as entity>
   /// Get all the ${entity.name?lower_case}s
-  Future<List<${entity.name}Data>> getAll${entity.name}s() => select(${entity.name?lower_case}).get();
+  Future<List<${entity.name}Data>> getAll${entity.name}s() => select(${entity.name?uncap_first}).get();
 
   <#if entity.hasAnnotation("SYNCH_CLIENT")>
   /// Get all the not synchronized ${entity.name?lower_case}s
   Future<List<${entity.name}Data>> getAllNonSynch${entity.name}s() =>
-      (select(${entity.name?lower_case})..where((t) => t.synchronized.equals(false)))
+      (select(${entity.name?uncap_first})..where((t) => t.synchronized.equals(false)))
           .get();
           
   </#if>
   /// Watch the list of ${entity.name?lower_case}
   Stream<List<${entity.name}Data>> watch${entity.name}() {
-    return select(${entity.name?lower_case}).watch();
+    return select(${entity.name?uncap_first}).watch();
   }
 
   /// Create new ${entity.name?lower_case} and return inserted entry
   Future<${entity.name}Data> create${entity.name}(${entity.name}Companion entry) {
-    return into(${entity.name?lower_case}).insertReturning(entry);
+    return into(${entity.name?uncap_first}).insertReturning(entry);
   }
   
   /// Add new ${entity.name?lower_case}.
   Future<int> add${entity.name}(${entity.name}Companion entry) {
-    return into(${entity.name?lower_case}).insertOnConflictUpdate(entry);
+    return into(${entity.name?uncap_first}).insertOnConflictUpdate(entry);
   }
   
   /// Get the ${entity.name?lower_case} by ${entity.primaryAttribute.name?lower_case}
   Future<${entity.name}Data?> get${entity.name}ByPrimaryKey(${entity.primaryAttribute.type} ${entity.primaryAttribute.name}) {
-    return (select(${entity.name?lower_case})..where((t) => t.id.equals(${entity.primaryAttribute.name}))).getSingle();
+    return (select(${entity.name?uncap_first})..where((t) => t.id.equals(${entity.primaryAttribute.name}))).getSingle();
   }
 
   /// delete the ${entity.name?lower_case} by ${entity.primaryAttribute.name?lower_case}
   Future delete${entity.name}ByPrimaryKey(${entity.primaryAttribute.type} ${entity.primaryAttribute.name}) {
-    return (delete(${entity.name?lower_case})..where((t) => t.id.equals(${entity.primaryAttribute.name}))).go();
+    return (delete(${entity.name?uncap_first})..where((t) => t.id.equals(${entity.primaryAttribute.name}))).go();
   }
 
   /// Update a ${entity.name?lower_case}
   Future updateFull${entity.name}(${entity.name}Data entry) {
-    return update(${entity.name?lower_case}).replace(entry);
+    return update(${entity.name?uncap_first}).replace(entry);
   }
   
   Future update${entity.name}(Insertable<${entity.name}Data> the${entity.name}) => 
-    update(${entity.name?lower_case}).replace(the${entity.name});
+    update(${entity.name?uncap_first}).replace(the${entity.name});
 
   /// Get last update date
   Future<${entity.name}Data?> get${entity.name}LastUpdateDate() {
     SimpleSelectStatement<$${entity.name}Table, ${entity.name}Data> simpleSelectStatement =
-        select(${entity.name?lower_case})
+        select(${entity.name?uncap_first})
           ..orderBy([(t) => OrderingTerm.desc(t.lastUpdateTimestamp)])
           ..limit(1);
 
@@ -162,7 +164,7 @@ class AppDatabase extends _$AppDatabase {
   <#assign relation = hasAtLeastOneRelation(entity)>
   /// Fetch all with relations ==> <#if relation>true<#else>false</#if>
   Stream<List<${entity.name?lower_case}DTO.${entity.name}>> getAll${entity.name}WithRelations() =>
-      (select(${entity.name?lower_case}))
+      (select(${entity.name?uncap_first}))
           <#list entity.attributes as attribute>
           <#if attribute.reference && attribute.multiplicity == 1>
           .join([leftOuterJoin(${attribute.model.name?lower_case}, ${attribute.model.name?lower_case}.${attribute.model.primaryAttribute.name}.equalsExp(${entity.name?lower_case}.${attribute.model.name?lower_case}${attribute.model.primaryAttribute.name?cap_first}))])
@@ -219,7 +221,7 @@ class AppDatabase extends _$AppDatabase {
           
     /// Fetch all with relations ==> <#if relation>true<#else>false</#if>
     Stream<List<${entity.name?lower_case}DTO.${entity.name}>> getAll${entity.name}WithRelationsNotSynchronized() =>
-      (select(${entity.name?lower_case})
+      (select(${entity.name?uncap_first})
           <#if entity.hasAnnotation("SYNCH_CLIENT")>
             ..where((tbl) {
               return tbl.synchronized.equals(false);
