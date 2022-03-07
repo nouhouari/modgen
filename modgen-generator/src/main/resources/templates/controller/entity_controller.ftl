@@ -1,8 +1,8 @@
 <#assign aDateTime = .now>
 <#assign aDate = aDateTime?date>
 /*
- * Author   : Nourreddine HOUARI <nourreddine.houari@sicpa.com>
- *     Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com> 
+ * Author   : Nourreddine HOUARI <nourreddine.houari@>
+ *     Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@> 
  *
  * Date     :  ${aDate?string.medium} 
  * 
@@ -65,8 +65,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Version      : ${version}<br>
  * Date         : ${aDate?string.medium}<br>
  * <br>
- * @author Nourreddine HOUARI <nourreddine.houari@sicpa.com>
- * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com>
+ * @author Nourreddine HOUARI <nourreddine.houari@>
+ * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@>
  *
  */
 @RestController

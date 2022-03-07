@@ -10,8 +10,8 @@
 </#list>
 
 /*
- * Author   :	Nourreddine HOUARI <nourreddine.houari@sicpa.com>
- * 				Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com> 
+ * Author   :	Nourreddine HOUARI <nourreddine.houari@>
+ * 				Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@> 
  *
  * Date     : 	${aDate?string.medium} 
  * 
@@ -63,8 +63,8 @@ import com.vividsolutions.jts.io.WKTReader;
  * Version      : ${version}<br>
  * Date         : ${aDate?string.medium}<br>
  * <br>
- * @author Nourreddine HOUARI <nourreddine.houari@sicpa.com>
- * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com> 
+ * @author Nourreddine HOUARI <nourreddine.houari@>
+ * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@> 
  * 
  */
 @Component("${entity.name?cap_first}Entity${dtoSuffix}Mapper")

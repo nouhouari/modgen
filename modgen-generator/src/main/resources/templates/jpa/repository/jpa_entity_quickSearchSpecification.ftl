@@ -20,8 +20,8 @@
  
 /*
  * Author   : 
- *     Nourreddine HOUARI <nourreddine.houari@sicpa.com>
- *     Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com> 
+ *     Nourreddine HOUARI <nourreddine.houari@>
+ *     Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@> 
  *
  * Date     :  ${aDate?string.medium} 
  * 

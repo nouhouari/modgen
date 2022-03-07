@@ -282,7 +282,7 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 }
 ```
 
-See https://wiki.sicpa.com/display/SWDEV/2018/12/27/Multiple+Spring+WebSecurityConfigurerAdapters for more information.
+See https://wiki./display/SWDEV/2018/12/27/Multiple+Spring+WebSecurityConfigurerAdapters for more information.
 
 ##### Extending a Generated Spring Component
 

@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * This class is responsible of storing the pagination result.
  *
- * @author Nourreddine Houari <nourreddine.houari@sicpa.com>
+ * @author Nourreddine Houari <nourreddine.houari@>
  *
  */
 public class ResultPage<T> {

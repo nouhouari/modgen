@@ -21,7 +21,7 @@ package ${validationPackage};
 import java.util.Map;
 
 /**
- * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com>
+ * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@>
  */
 public final class ThreadLocalErrorContext {
     private static final ThreadLocal<Map<String, String>> THREAD_LOCAL_ERRORS = new ThreadLocal<Map<String, String>>();

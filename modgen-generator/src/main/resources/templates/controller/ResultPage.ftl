@@ -1,8 +1,8 @@
 <#assign aDateTime = .now>
 <#assign aDate = aDateTime?date>
 /*
- * Author   :	Nourreddine HOUARI <nourreddine.houari@sicpa.com>
- * 				Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com> 
+ * Author   :	Nourreddine HOUARI <nourreddine.houari@>
+ * 				Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@> 
  *
  * Date     : 	${aDate?string.medium}
  * 
@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * This class is responsible of storing the pagination result.
  *
- * @author Nourreddine Houari <nourreddine.houari@sicpa.com>
+ * @author Nourreddine Houari <nourreddine.houari@>
  *
  */
 public class ResultPage<T> {

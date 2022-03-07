@@ -79,7 +79,7 @@ import ${rolePackage}.${entity.name?cap_first}Roles;
  * Version      : ${version}<br>
  * Date         : ${aDate?string.medium}<br>
  * <br>
- * @author Nourreddine HOUARI <nourreddine.houari@sicpa.com>
+ * @author Nourreddine HOUARI <nourreddine.houari@>
  *
  */
 @Component

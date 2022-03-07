@@ -1,7 +1,7 @@
 <#assign aDateTime = .now>
 <#assign aDate = aDateTime?date>
 /*
- * Author   :	Nourreddine HOUARI <nourreddine.houari@sicpa.com>
+ * Author   :	Nourreddine HOUARI <nourreddine.houari@>
  *
  * Date     : 	${aDate?string.medium} 
  * 

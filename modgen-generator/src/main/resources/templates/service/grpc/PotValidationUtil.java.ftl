@@ -31,7 +31,7 @@ import org.springframework.util.Assert;
 /**
  * Validation Util for JSR-303 to validate and process validation errors.
  *
- * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@sicpa.com>
+ * @author Koneru, Venkaiah Chowdary <VenkaiahChowdary.Koneru@>
  */
 @Slf4j
 public final class PotValidationUtil {
