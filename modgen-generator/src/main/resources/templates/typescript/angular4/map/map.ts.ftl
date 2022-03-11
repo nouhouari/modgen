@@ -47,16 +47,19 @@ export class ${entity.name}MapComponent implements AfterViewInit, OnChanges {
       }
     );
     openStreetLayer.addTo(this.map);
-    // fire event on click
-    this.map.on('click', (e:any)=>{
-      this.removeMarker();
-      const p: geojson.Point = {
-        type: "Point",
-        coordinates: [e.latlng.lng, e.latlng.lat]
-      };
-      this.addMarker(p);
-      this.clickOnMap.emit(p);
-    });
+    
+    if (this.mapMode == State.NEW || this.mapMode == State.EDIT) {
+      // fire event on click
+      this.map.on('click', (e: any) => {
+        this.removeMarker();
+        const p: geojson.Point = {
+          type: "Point",
+          coordinates: [e.latlng.lng, e.latlng.lat]
+        };
+        this.addMarker(p);
+        this.clickOnMap.emit(p);
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {    
