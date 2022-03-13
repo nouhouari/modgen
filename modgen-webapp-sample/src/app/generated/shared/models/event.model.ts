@@ -31,6 +31,12 @@ export class Event {
    // Description field
    public description: string;
   public location: geojson.Point;
+   // StartDate field
+   public startDate: Date;
+   // Organizer field
+   public organizer: string;
+   // EndDate field
+   public endDate: Date;
    // Version
    public version: number;
    // Extension

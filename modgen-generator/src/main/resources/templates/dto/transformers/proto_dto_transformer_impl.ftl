@@ -78,8 +78,8 @@ import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 </#if>
 <#if isExtendable>
-import com.sicpa.ptf.extension.schema.support.common.ExtensionSchemaCache;
-import com.sicpa.ptf.extension.schema.support.common.ExtensionsParser;
+import com.hin.ptf.extension.schema.support.common.ExtensionSchemaCache;
+import com.hin.ptf.extension.schema.support.common.ExtensionsParser;
 import com.google.protobuf.Any;
 </#if>
 

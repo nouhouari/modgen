@@ -11,6 +11,20 @@
           <input matInput placeholder="Location" id="event_Location" name="Location" formControlName="location">
         </mat-form-field>
         <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="StartDate_picker" placeholder="Choose a StartDate" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="StartDate_picker"></mat-datepicker-toggle>
+          <mat-datepicker #StartDate_picker></mat-datepicker>
+        </mat-form-field><br>
+        <mat-form-field>
+          <input matInput placeholder="Organizer" id="event_Organizer" name="Organizer" formControlName="organizer">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="EndDate_picker" placeholder="Choose a EndDate" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="EndDate_picker"></mat-datepicker-toggle>
+          <mat-datepicker #EndDate_picker></mat-datepicker>
+        </mat-form-field><br>
   <!-- Extension -->
   <div *ngIf="schema">
     <label>Extension</label><br>

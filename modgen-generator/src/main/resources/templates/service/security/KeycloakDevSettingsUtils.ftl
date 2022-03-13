@@ -192,7 +192,7 @@ public class KeycloakDevSettingsUtils {
       user.setEnabled(true);
       user.setFirstName("user01");
       user.setLastName("user01");
-      user.setEmail("user01@sicpa-dev.com");
+      user.setEmail("user01@hin-dev.com");
       user.setEmailVerified(true);
       List<CredentialRepresentation> credentials = new ArrayList<>();
       CredentialRepresentation e = new CredentialRepresentation();

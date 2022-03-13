@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventSearchCriteria, Event } from 'src/app/generated/shared/models/event.model';
 import { Page } from 'src/app/generated/shared/models/page.model';
+import { State } from 'src/app/generated/shared/modules/shared/util/app.constant';
 import { Utils } from '../../../utils/utils';
 
 @Component({
@@ -14,6 +15,7 @@ export class EventComponent implements OnInit {
   page: Page<Event>;
   dataSource: Event[];
   searchCriteria: EventSearchCriteria = new EventSearchCriteria();
+  state = State.VIEW;
 
   constructor(private router: Router,
     private route: ActivatedRoute) {
@@ -26,6 +28,8 @@ export class EventComponent implements OnInit {
   }
 
   onSearch($event: any) {
+    console.log($event);
+    
     this.searchCriteria = $event;
   }
 

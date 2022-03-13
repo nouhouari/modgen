@@ -37,8 +37,8 @@ import rx.subjects.PublishSubject;
 import rx.Subscription;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import com.google.protobuf.Any;
-import com.sicpa.ptf.common.messages.Audit;
-import com.sicpa.ptf.common.messages.Envelope;
+import com.hin.ptf.common.messages.Audit;
+import com.hin.ptf.common.messages.Envelope;
 import com.google.protobuf.InvalidProtocolBufferException;
   <#break>
   </#if>
@@ -47,25 +47,25 @@ import com.google.protobuf.InvalidProtocolBufferException;
   <#if entity.hasAnnotation("SUBSCRIBE")>
 import org.apache.kafka.clients.consumer.OffsetResetStrategy;  
 import rx.Observable;
-import com.sicpa.ptf.common.messages.Envelope;
+import com.hin.ptf.common.messages.Envelope;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
   <#break>
   </#if>
 </#list>
 import lombok.extern.slf4j.Slf4j;
-import com.sicpa.ptf.kafka.support.consumer.KafkaReader;
-import com.sicpa.ptf.kafka.support.producer.KafkaWriter;
-import com.sicpa.ptf.kafka.support.consumer.KafkaConsumerFactory;
-import com.sicpa.ptf.multitenancy.MultiTenancyProperties;
+import com.hin.ptf.kafka.support.consumer.KafkaReader;
+import com.hin.ptf.kafka.support.producer.KafkaWriter;
+import com.hin.ptf.kafka.support.consumer.KafkaConsumerFactory;
+import com.hin.ptf.multitenancy.MultiTenancyProperties;
 
 import io.grpc.BindableService;
 <#list entities as entity>
 <#if entity.hasAnnotation("PUBLISH")>
-import com.sicpa.ptf.kafka.entitypublisher.EntityPublisher;
-import com.sicpa.ptf.kafka.entitypublisher.EntityPublisherDaemon;
-import com.sicpa.ptf.kafka.entitypublisher.PublishableEntityRepository;
-import com.sicpa.ptf.audit.trail.Auditor;
-import com.sicpa.ptf.audit.trail.AuditorHolder;
+import com.hin.ptf.kafka.entitypublisher.EntityPublisher;
+import com.hin.ptf.kafka.entitypublisher.EntityPublisherDaemon;
+import com.hin.ptf.kafka.entitypublisher.PublishableEntityRepository;
+import com.hin.ptf.audit.trail.Auditor;
+import com.hin.ptf.audit.trail.AuditorHolder;
 <#break>
 </#if>
 </#list>

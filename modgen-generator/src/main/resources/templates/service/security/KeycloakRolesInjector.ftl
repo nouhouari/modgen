@@ -19,7 +19,7 @@
 package ${package};
 
 import ${rolePackage}.${entity.name}Roles;
-import com.sicpa.ptf.keycloak.test.support.setup.KeycloakSetup;
+import com.hin.ptf.keycloak.test.support.setup.KeycloakSetup;
 
 import lombok.extern.slf4j.Slf4j;
 

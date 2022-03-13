@@ -20,9 +20,9 @@ import { ${entity.name}Service } from './../shared/${entity.name?lower_case}.ser
 import { ${entity.name} } from './../shared/${entity.name?lower_case}.model';
 import { IStateParamsService } from 'angular-ui-router';
 import * as _ from 'lodash';
-import { AggregatorService } from 'sicpa-web-aggregation';
+import { AggregatorService } from 'hin-web-aggregation';
 
-import { IBreadcrumb, IHasMessagesService } from 'sicpa-styleguide-angular';
+import { IBreadcrumb, IHasMessagesService } from 'hin-styleguide-angular';
 <#assign myHash = { }>
 <#list entity.attributes as attribute>
 <#if !myHash[attribute.type]??>
@@ -40,7 +40,7 @@ import { ${attribute.type}Service } from '../../${attribute.type?lower_case}s/sh
 </#if>
 </#list>
 <#if entity.hasAnnotation("EXTENDABLE")>
-import { Schema, Field } from 'sicpa-extension-schema';
+import { Schema, Field } from 'hin-extension-schema';
 </#if>
 
 /* @ngInject */

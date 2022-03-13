@@ -23,7 +23,7 @@ import {
     ${entity.name}PageResult } from './${entity.name?lower_case}.model';
 import { ApiService } from '../../../shared/api/api.service';
 <#if entity.hasAnnotation("EXTENDABLE")>
-import { Schema, Field, Translation, AvailableValue } from 'sicpa-extension-schema';
+import { Schema, Field, Translation, AvailableValue } from 'hin-extension-schema';
 import * as _ from 'lodash';
 import { IDeferred } from 'angular';
 </#if>

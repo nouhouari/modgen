@@ -27,7 +27,7 @@ public class Settings {
   private final String dtoSuffix = "DTO";
 
   // Computed parameters
-  private String rootPackage = "com.sicpa.modgen.test";
+  private String rootPackage = "com.hin.modgen.test";
   private String protoBufPackage = rootPackage + ".proto";
   private String entityPackage = rootPackage + ".entity";
   private String repositoryPackage = rootPackage + ".repository";

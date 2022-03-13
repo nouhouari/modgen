@@ -16,15 +16,15 @@
  * All Rights Reserved.
  */
 
-import { IHasMessagesService } from 'sicpa-styleguide-angular';
+import { IHasMessagesService } from 'hin-styleguide-angular';
 import { ${entity.name}Service } from './../shared/${entity.name?lower_case}.service';
 import {
 ${entity.name},
 ${entity.name}PageResult,
 ${entity.name}SearchCriteria } from './../shared/${entity.name?lower_case}.model';
-import { AggregatorService } from 'sicpa-web-aggregation';
+import { AggregatorService } from 'hin-web-aggregation';
 <#if entity.hasAnnotation("EXTENDABLE")>
-import { Schema, Field } from 'sicpa-extension-schema';
+import { Schema, Field } from 'hin-extension-schema';
 import { Extensions } from '../../shared/extension.model';
 </#if>
 /* @ngInject */

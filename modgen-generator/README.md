@@ -391,7 +391,7 @@ The generators needs some parameters to be able to generate the code at the righ
 
 - _rootPackage_ = Package name.
 
->_example:"com.sicpa.pot.traceability.test"_
+>_example:"com.hin.pot.traceability.test"_
 
 ### Releases notes
 

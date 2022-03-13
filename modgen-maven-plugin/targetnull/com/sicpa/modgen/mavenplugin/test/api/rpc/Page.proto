@@ -1,18 +1,18 @@
 /*
  * 
- * SICPA CONFIDENTIAL
+ * Nourredine HOUARI CONFIDENTIAL
  * 
  * All information contained herein is, and remains
- * the property of SICPA and its suppliers,
+ * the property of Nourredine HOUARI and its suppliers,
  * if any.  The intellectual and technical concepts contained
- * herein are proprietary to SICPA
+ * herein are proprietary to Nourredine HOUARI
  * and its suppliers and may be covered by U.S. and Foreign Patents,
  * patents in process, and are protected by trade secret or copyright law.
  * Dissemination of this information or reproduction of this material
  * is strictly forbidden unless prior written permission is obtained
- * from SICPA.
+ * from Nourredine HOUARI.
  * 
- * [2017] SICPA SA
+ * [2017] Nourredine HOUARI SA
  * All Rights Reserved.
  */
  
@@ -27,10 +27,10 @@
 //
 syntax = "proto3";
 
-package com.sicpa.modgen.mavenplugin.test.api.rpc;
+package com.hin.modgen.mavenplugin.test.api.rpc;
 
 option java_multiple_files = true;
-option java_package = "com.sicpa.modgen.mavenplugin.test.api.rpc";
+option java_package = "com.hin.modgen.mavenplugin.test.api.rpc";
 option java_outer_classname = "PageProtoBuf";
 
   // Define Page

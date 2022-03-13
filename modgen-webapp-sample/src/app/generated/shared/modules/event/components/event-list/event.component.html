@@ -9,6 +9,18 @@
       <th mat-header-cell *matHeaderCellDef>Description<span (click)="sort('description', 'DESC')">&#8595;</span> <span (click)="sort('description', 'ASC')">&#8593;</span></th>
       <td mat-cell *matCellDef="let element">{{ element.description }}</td>
     </ng-container>
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>StartDate<span (click)="sort('startDate', 'DESC')">&#8595;</span> <span (click)="sort('startDate', 'ASC')">&#8593;</span></th>
+      <td mat-cell *matCellDef="let element">{{ element.startDate | date: 'short'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="organizer">
+      <th mat-header-cell *matHeaderCellDef>Organizer<span (click)="sort('organizer', 'DESC')">&#8595;</span> <span (click)="sort('organizer', 'ASC')">&#8593;</span></th>
+      <td mat-cell *matCellDef="let element">{{ element.organizer }}</td>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>EndDate<span (click)="sort('endDate', 'DESC')">&#8595;</span> <span (click)="sort('endDate', 'ASC')">&#8593;</span></th>
+      <td mat-cell *matCellDef="let element">{{ element.endDate | date: 'short'}}</td>
+    </ng-container>
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element; let i = index;">

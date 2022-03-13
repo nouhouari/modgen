@@ -3,9 +3,7 @@
  */
 package fr.hin.modelgenerator.generator;
 
-import static fr.hin.modelgenerator.GeneratorConstants.STR_ENTITY;
-import static fr.hin.modelgenerator.GeneratorConstants.STR_GENERATOR;
-import static fr.hin.modelgenerator.GeneratorConstants.STR_VERSION;
+import static fr.hin.modelgenerator.GeneratorConstants.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +14,11 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.hin.modelgenerator.model.Annotation;
+import fr.hin.modelgenerator.model.Attribute;
+import fr.hin.modelgenerator.model.ClassifierType;
+import fr.hin.modelgenerator.model.ObjectMetaModel;
+import fr.hin.modelgenerator.model.ObjectRelationModel;
 import fr.hin.modelgenerator.ecore.EClass;
 import fr.hin.modelgenerator.ecore.EClassifier;
 import fr.hin.modelgenerator.ecore.EEnum;
@@ -24,11 +27,6 @@ import fr.hin.modelgenerator.ecore.EPackage;
 import fr.hin.modelgenerator.ecore.EReference;
 import fr.hin.modelgenerator.ecore.EStructuralFeature;
 import fr.hin.modelgenerator.generator.utils.Utils;
-import fr.hin.modelgenerator.model.Annotation;
-import fr.hin.modelgenerator.model.Attribute;
-import fr.hin.modelgenerator.model.ClassifierType;
-import fr.hin.modelgenerator.model.ObjectMetaModel;
-import fr.hin.modelgenerator.model.ObjectRelationModel;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
 
@@ -45,7 +43,6 @@ public abstract class AbstractGenerator implements IGenerator {
 	protected Configuration cfg;
 	protected String template;
 	private String outputDir;
-	//private Map<String, Map<String, Object>> entities = new HashMap<String, Map<String, Object>>();
 	private Map<String, ObjectMetaModel> metaModels = new HashMap<>();
 
 	public AbstractGenerator(String outputDir) {

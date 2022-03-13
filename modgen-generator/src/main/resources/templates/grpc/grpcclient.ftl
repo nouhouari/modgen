@@ -48,7 +48,7 @@ import ${protoPackage}.Link${entity.name}To${attribute.name?cap_first}Request;
 <#list entity.relations as relation>
 import ${protoPackage}.${entity.name?cap_first}By${relation.model.name?cap_first}${relation.relationName?cap_first}Request;
 </#list>   
-import com.sicpa.ptf.grpc.support.GrpcRxClient;
+import com.hin.ptf.grpc.support.GrpcRxClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

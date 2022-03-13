@@ -19,10 +19,10 @@
 import { ${entity.name}Service } from './../shared/${entity.name?lower_case}.service';
 import { ${entity.name}, ${entity.name}SaveResult } from './../shared/${entity.name?lower_case}.model';
 import { IStateParamsService } from 'angular-ui-router';
-import { IBreadcrumb, IHasMessagesService } from 'sicpa-styleguide-angular';
-import { AggregatorService } from 'sicpa-web-aggregation';
+import { IBreadcrumb, IHasMessagesService } from 'hin-styleguide-angular';
+import { AggregatorService } from 'hin-web-aggregation';
 <#if entity.hasAnnotation("EXTENDABLE")>
-import { Field, Schema } from 'sicpa-extension-schema';
+import { Field, Schema } from 'hin-extension-schema';
 import { Extensions } from '../../shared/extension.model';
 </#if>
 <#list entity.attributes as attribute>

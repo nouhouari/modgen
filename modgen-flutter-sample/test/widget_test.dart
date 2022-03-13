@@ -7,13 +7,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:modgensample/api/event-api.dart';
+import 'package:modgensample/cubit/event-cubit.dart';
 
 import 'package:modgensample/main.dart';
+import 'package:modgensample/state/event-state.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(EventCubit(EventState(), EventAPI(''))));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

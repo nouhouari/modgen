@@ -65,10 +65,10 @@ import ${entityPackage}.${relation.model.name}${entity_suffix};
 </#if>
 </#list>
 
-import com.sicpa.ptf.audit.trail.Auditor;
-import com.sicpa.ptf.common.messages.Audit;
-import com.sicpa.ptf.extension.schema.support.service.SchemaDao;
-import com.sicpa.ptf.extension.schema.support.service.SchemaEntity;
+import com.hin.ptf.audit.trail.Auditor;
+import com.hin.ptf.common.messages.Audit;
+import com.hin.ptf.extension.schema.support.service.SchemaDao;
+import com.hin.ptf.extension.schema.support.service.SchemaEntity;
 
 import javax.validation.Validator;
 import rx.subjects.PublishSubject;

@@ -13,7 +13,13 @@ export class EventForm {
       // description field
       description: new FormControl(''),
       // location field
-      location: new FormControl('')
+      location: new FormControl(''),
+      // startDate field
+      startDate: new FormControl(''),
+      // organizer field
+      organizer: new FormControl(''),
+      // endDate field
+      endDate: new FormControl('')
     });
   }
 

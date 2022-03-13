@@ -29,7 +29,7 @@ export class EventListComponent implements OnInit, OnChanges {
   view: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   data: EventEmitter<Event[]> = new EventEmitter<Event[]>();
-  displayedColumns: string[] = [ 'name','description','action'];
+  displayedColumns: string[] = [ 'name','description','startDate','organizer','endDate','action'];
   pageSizeOptions:any[]=[5, 10, 20, 30, 50];
   private currentPageSize: number;
 

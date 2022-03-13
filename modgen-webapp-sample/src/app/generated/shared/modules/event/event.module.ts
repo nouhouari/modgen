@@ -1,53 +1,48 @@
+/*
+*
+* Nourreddine HOUARI CONFIDENTIAL
+*
+* All information contained herein is, and remains
+* the property of Nourreddine HOUARI and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Nourreddine HOUARI
+* and its suppliers and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Nourreddine HOUARI.
+*
+* [2021] Nourreddine HOUARI SA
+* All Rights Reserved.
+*/
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxPermissionsModule } from 'ngx-permissions';
-// import { MaterialModule } from '../../../../../core/material/material-component/material.module';
-// import { GeneratedBizModule } from '../biz/generated-biz.module';
-// import { GeneratedSharedModule } from '../shared/generated-shared.module';
-
-import { EventService } from './services/event.service';
-// import { EventDetailComponent } from './components/inspection-detail/inspection-detail.component';
+import { EventCreateComponent } from './components/event-create/event-create.component';
 import { EventEditComponent } from './components/event-edit/event-edit.component';
+import { EventViewComponent } from './components/event-view/event-view.component';
+import { EventForm } from './components/event-form/event.form';
 import { EventListComponent } from './components/event-list/event.component';
+import { EventMapComponent } from './components/event-map/event-map.component';
 import { EventQuickSearchComponent } from './components/event-quicksearch/event-quicksearch.component';
 import { EventSearchComponent } from './components/event-search/event-search.component';
-import { EventMapComponent } from './components/event-map/event-map.component';
-import { MaterialModule } from 'src/app/core/material/material-component/material.module';
-import { JsonSchemaFormModule } from '@ajsf/core';
-import { GeneratedSharedModule } from '../shared/shared.module';
-
+import { EventUpdateComponent } from './components/event-update/event-update.component';
 
 
 @NgModule({
-  declarations: [
-    EventEditComponent,
-    EventListComponent,
-    EventQuickSearchComponent,
-    EventSearchComponent,
-    EventMapComponent
-    // EventDetailComponent,
-  ],
-  exports: [
-    EventSearchComponent,
-    EventQuickSearchComponent,
-    EventListComponent,
-    EventEditComponent,
-    EventMapComponent,
-    // EventDetailComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    NgxPermissionsModule.forChild(),
-    JsonSchemaFormModule,
-    GeneratedSharedModule,
-    // GeneratedBizModule
-  ],
-  providers: [
-    EventService
-  ]
+declarations: [
+	EventCreateComponent,
+	EventEditComponent,
+	EventForm,
+	EventListComponent,
+	EventViewComponent,
+	EventMapComponent,
+	EventQuickSearchComponent,
+	EventSearchComponent,
+	EventUpdateComponent,
+],
+imports: [
+	CommonModule
+]
 })
 export class GeneratedEventModule { }

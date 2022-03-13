@@ -27,16 +27,16 @@
 //
 syntax = "proto3";
 
-package com.sicpa.modgen.horizon.inspection.api.rpc;
+package com.hin.modgen.horizon.inspection.api.rpc;
 
 option java_multiple_files = true;
-option java_package = "com.sicpa.modgen.horizon.inspection";
+option java_package = "com.hin.modgen.horizon.inspection";
 option java_outer_classname = "ModelProtoBuf";
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 
-import "com/sicpa/modgen/horizon/inspection/api/rpc/Page.proto";
+import "com/hin/modgen/horizon/inspection/api/rpc/Page.proto";
 
 
 

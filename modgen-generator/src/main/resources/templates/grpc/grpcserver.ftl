@@ -29,7 +29,7 @@ import com.google.protobuf.Int64Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rx.Observable;
-import com.sicpa.ptf.grpc.support.GrpcRxServer;
+import com.hin.ptf.grpc.support.GrpcRxServer;
 import io.grpc.BindableService;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;

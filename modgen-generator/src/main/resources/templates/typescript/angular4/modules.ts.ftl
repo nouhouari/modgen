@@ -18,37 +18,31 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-<#list entities as entity>
-import { ${entity.name}CreateComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-create/${entity.name?lower_case}-create.component';
-import { ${entity.name}EditComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-edit/${entity.name?lower_case}-edit.component';
-import { ${entity.name}FormComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-form/${entity.name?lower_case}-form.component';
-import { ${entity.name}ListComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-list/${entity.name?lower_case}-list.component';
-import { ${entity.name}MapComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-map/${entity.name?lower_case}-map.component';
-import { ${entity.name}MapComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-map/${entity.name?lower_case}-map.component';
-import { ${entity.name}QuickSearchComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-quicksearch/${entity.name?lower_case}-quicksearch.component';
-import { ${entity.name}SearchComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-search/${entity.name?lower_case}-search.component';
-import { ${entity.name}UpdateComponent } from './${entity.name?lower_case}/components/${entity.name?lower_case}-update/${entity.name?lower_case}-update.component';
-</#list>
+import { ${entity.name}CreateComponent } from './components/${entity.name?lower_case}-create/${entity.name?lower_case}-create.component';
+import { ${entity.name}EditComponent } from './components/${entity.name?lower_case}-edit/${entity.name?lower_case}-edit.component';
+import { ${entity.name}ViewComponent } from './components/${entity.name?lower_case}-view/${entity.name?lower_case}-view.component';
+import { ${entity.name}Form } from './components/${entity.name?lower_case}-form/${entity.name?lower_case}.form';
+import { ${entity.name}ListComponent } from './components/${entity.name?lower_case}-list/${entity.name?lower_case}.component';
+import { ${entity.name}MapComponent } from './components/${entity.name?lower_case}-map/${entity.name?lower_case}-map.component';
+import { ${entity.name}QuickSearchComponent } from './components/${entity.name?lower_case}-quicksearch/${entity.name?lower_case}-quicksearch.component';
+import { ${entity.name}SearchComponent } from './components/${entity.name?lower_case}-search/${entity.name?lower_case}-search.component';
+import { ${entity.name}UpdateComponent } from './components/${entity.name?lower_case}-update/${entity.name?lower_case}-update.component';
 
 
 @NgModule({
 declarations: [
-<#list entities as entity>
 	${entity.name}CreateComponent,
 	${entity.name}EditComponent,
-	${entity.name}FormComponent,
+	${entity.name}Form,
 	${entity.name}ListComponent,
-
-	${entity.name}MapComponent,
-
+	${entity.name}ViewComponent,
 	${entity.name}MapComponent,
 	${entity.name}QuickSearchComponent,
 	${entity.name}SearchComponent,
 	${entity.name}UpdateComponent,
-</#list>
 ],
 imports: [
 	CommonModule
 ]
 })
-export class GeneratedModule { }
+export class Generated${entity.name?cap_first}Module { }

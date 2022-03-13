@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.mapping.Result;
-import com.sicpa.gssd.metis.support.cassandra.AbstractCassandraRepository;
+import com.hin.gssd.metis.support.cassandra.AbstractCassandraRepository;
 
 import ${entityPackage}.${entity.name?cap_first};
 

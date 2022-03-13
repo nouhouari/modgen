@@ -16,7 +16,7 @@
  * All Rights Reserved.
  */
 
-import { IBreadcrumb } from 'sicpa-styleguide-angular';
+import { IBreadcrumb } from 'hin-styleguide-angular';
 
 /* @ngInject */
 export class ${entity.name}Main {

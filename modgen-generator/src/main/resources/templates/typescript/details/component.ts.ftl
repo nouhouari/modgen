@@ -20,8 +20,8 @@ import { ${entity.name}Service } from './../shared/${entity.name?lower_case}.ser
 import { ${entity.name} } from './../shared/${entity.name?lower_case}.model';
 import { IStateParamsService } from 'angular-ui-router';
 import * as _ from 'lodash';
-import { IBreadcrumb } from 'sicpa-styleguide-angular';
-import { AggregatorService } from 'sicpa-web-aggregation';
+import { IBreadcrumb } from 'hin-styleguide-angular';
+import { AggregatorService } from 'hin-web-aggregation';
 
 /* @ngInject */
 export class ${entity.name}Details {

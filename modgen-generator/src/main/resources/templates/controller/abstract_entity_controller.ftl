@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sicpa.gssd.metis.commonsweb.controller.AbstractController;
-import com.sicpa.gssd.metis.dto.EventBusDTO;
-import com.sicpa.gssd.metis.dto.ResponseDTO;
-import com.sicpa.gssd.metis.enums.EntityState;
-import com.sicpa.gssd.metis.enums.OutcomeStatus;
-import com.sicpa.gssd.metis.support.CommonsUtil;
+import com.hin.gssd.metis.commonsweb.controller.AbstractController;
+import com.hin.gssd.metis.dto.EventBusDTO;
+import com.hin.gssd.metis.dto.ResponseDTO;
+import com.hin.gssd.metis.enums.EntityState;
+import com.hin.gssd.metis.enums.OutcomeStatus;
+import com.hin.gssd.metis.support.CommonsUtil;
 
 import ${servicePackage}.GenericEntityService;
 

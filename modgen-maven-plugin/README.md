@@ -2,7 +2,7 @@
 
 # Getting Started
 
-* Clone source repostiory from `git clone http://psdgit.sicpa-net.ads/scm/~nhouari/modelgen-maven-plugin.git && cd modelgen-maven-plugin/modelgen-maven-plugin`
+* Clone source repostiory from `git clone http://psdgit.hin-net.ads/scm/~nhouari/modelgen-maven-plugin.git && cd modelgen-maven-plugin/modelgen-maven-plugin`
 * Install in local maven repo `mvn clean install`
 
 # Usage
@@ -12,7 +12,7 @@
 <build>
 	<plugins>
 		<plugin>
-			<groupId>com.sicpa.modelgen.plugin</groupId>
+			<groupId>com.hin.modelgen.plugin</groupId>
 			<artifactId>modelgen-maven-plugin</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
 			<configuration>
@@ -21,13 +21,13 @@
 	            <htmlOutputDir>${project.build.directory}/generated-sources/html</htmlOutputDir>
 				<models>
                   <model>
-                    <modelPath>target/modgen-resources/com/sicpa/pot/traceability/workflow/model/workflow.ecore</modelPath>
-                    <rootPackage>com.sicpa.pot.traceability.workflow</rootPackage>
+                    <modelPath>target/modgen-resources/com/hin/pot/traceability/workflow/model/workflow.ecore</modelPath>
+                    <rootPackage>com.hin.pot.traceability.workflow</rootPackage>
                     <component>workflow</component>
                   </model>
                   <model>
-                    <modelPath>target/modgen-resources/com/sicpa/pot/traceability/stamporder/model/stamporder.ecore</modelPath>
-                    <rootPackage>com.sicpa.pot.traceability.stamporder</rootPackage>
+                    <modelPath>target/modgen-resources/com/hin/pot/traceability/stamporder/model/stamporder.ecore</modelPath>
+                    <rootPackage>com.hin.pot.traceability.stamporder</rootPackage>
                     <component>stampOrder</component>
                   </model>
                 </models>

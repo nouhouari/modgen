@@ -19,7 +19,7 @@ import { EventEditComponent } from './event-edit/event-edit.component';
     EventComponent,
     EventCreateComponent,
     EventDetailsComponent,
-    EventEditComponent
+    EventEditComponent,
   ],
   imports: [
     // Angular

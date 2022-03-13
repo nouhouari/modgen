@@ -19,3 +19,11 @@
         <app-event-list [searchCriteria]="searchCriteria" (data)="onDataSource($event)" (update)="onEditRecord($event)" (select)="onSelectRecord($event)" (view)="onView($event)"></app-event-list>
     </div>
 </div>
+
+<div>
+    <app-event-view></app-event-view>
+</div>
+
+<div>
+    <app-event-map [events]="dataSource" [mapMode]="state"></app-event-map>
+</div>

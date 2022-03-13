@@ -1,4 +1,4 @@
-import { Item, FieldValues, Schema } from 'sicpa-extension-schema';
+import { Item, FieldValues, Schema } from 'hin-extension-schema';
 
 /**
  * Extension values.

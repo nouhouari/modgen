@@ -9,10 +9,10 @@
 		<version>2.5.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sicpa.modgen.spring-boot</groupId>
+	<groupId>com.hin.modgen.spring-boot</groupId>
 	<artifactId>modgen-spring-boot-sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>horizon</name>
+	<name>modgen-sping-boot-sample</name>
 	<description>Demo project for Modgen and Spring boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -23,6 +23,7 @@
 		<jts.version>1.14.0</jts.version>
 		<hibernate.version>5.3.20.Final</hibernate.version>
 		<flying-saucer-pdf.version>9.1.22</flying-saucer-pdf.version>
+		<stream.version>3.4.0</stream.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,8 +45,8 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		
-		
+
+
 		<!-- PDF generation -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -129,6 +130,12 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-spatial</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.getstream.client</groupId>
+			<artifactId>stream-java</artifactId>
+			<version>${stream.version}</version>
 		</dependency>
 
 	</dependencies>

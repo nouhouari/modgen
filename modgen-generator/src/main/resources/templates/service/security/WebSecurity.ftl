@@ -38,7 +38,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import ${rolePackage}.${entity.name}Roles;
 </#if>
 </#list>
-import com.sicpa.ptf.spring.boot.starter.keycloak.http.KeycloakSecurityConfigurer;
+import com.hin.ptf.spring.boot.starter.keycloak.http.KeycloakSecurityConfigurer;
 
 /**
  * Keycloak web security configuration bean.

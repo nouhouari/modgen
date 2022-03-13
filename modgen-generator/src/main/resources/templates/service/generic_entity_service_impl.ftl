@@ -25,8 +25,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-//import com.sicpa.gssd.metis.support.validation.ValidationUtil;
-//import com.sicpa.gssd.metis.support.CommonsUtil;
+//import com.hin.gssd.metis.support.validation.ValidationUtil;
+//import com.hin.gssd.metis.support.CommonsUtil;
 import ${package}.GenericEntityService;
 import ${transformerPackage}.GenericEntityDTOTransformer;
 
@@ -170,8 +170,8 @@ public abstract class GenericEntityServiceImpl<DTO, T>
 	 * Any custome validation need to be atatched to the thread local error context.
 	 * 
 	 * @param dto 
-	 * @see com.sicpa.gssd.metis.support.threadlocals.ThreadLocalErrorContext
-	 * @see com.sicpa.gssd.metis.support.validation.ValidaitonUtil
+	 * @see com.hin.gssd.metis.support.threadlocals.ThreadLocalErrorContext
+	 * @see com.hin.gssd.metis.support.validation.ValidaitonUtil
 	 */
 	protected void onBeforeDTOValidation(DTO dto) {
 	}

@@ -1,96 +1,98 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
-  <head>
+<head>
     <title>Inspection Report</title>
     <link th:href="@{styles/style.css}" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
-    <img src="sicpa.jpeg" style="width:100px"></img>
+<body>
+    <img src="hin.jpeg" style="width:100px"></img>
     <div style="color: gray">
-      <h4 th:text="'Generation date: '+${#calendars.format(#calendars.createNow(),'yyyy/MM/dd HH:mm.ss')}"></h4>
-    </div>  
-    
+        <h4 th:text="'Generation date: '+${#calendars.format(#calendars.createNow(),'yyyy/MM/dd HH:mm.ss')}"></h4>
+    </div>
+
     <h2 style="text-align: center; color: #333333">
-      <span>Inspection report</span>
+        <span>Inspection report</span>
     </h2>
     <br/>
     <br/>
     <div th:each="inspection : ${inspections}">
-      <h2>Inspection</h2>
-      <p th:text="'Status: '+${inspection.status}"></p>
-      <p th:text="'Date: '+${inspection.createdDate}"></p>
+        <h2>Inspection</h2>
+        <p th:text="'Status: '+${inspection.status}"></p>
+        <p th:text="'Date: '+${inspection.createdDate}"></p>
 
-      <h3>Business</h3>
-      
-      <table>
-       <tr>
-        <td> 
-          <div style="color:gray">Name</div><div th:text="${inspection.biz.name}"></div>
-        </td>
-        <td>
-           <div style="color:gray">License Number</div>
-           <div th:text="'&#9;'+${inspection.biz.licenseNumber}"></div>
-        </td>
-       </tr>
-       <tr>
-        <td>
-          <div style="color:gray">City</div>
-          <div th:text="'&#9;'+${inspection.biz.city}"></div>
-        </td>
-        <td>
-          <div style="color:gray">Street</div>
-          <div th:text="'&#9;'+${inspection.biz.street}"></div>
-        </td>
-       </tr>
-       <tr>
-        <td>
-          <div style="color:gray">Zip Code</div>
-          <div th:text="'&#9;'+${inspection.biz.zip}"></div>
-        </td>
-        <td></td>
-       </tr>
-      </table>
-      <h2>Scans</h2>
-      <div th:each="scan : ${inspectionScans[inspection.id]}">
-      <span th:text="'scan id='+${scan.id}" style="color:#cccccc"></span>
-      <table >
-        <tr>
-      		<th>Date</th>
-      		<th>Result</th>
-      		<th>Device</th>
-      		<th>Product</th>
-        </tr>
-        <tr>
-        	<td th:text="${scan.date}"></td>
-        	<td th:text="${scan.result}"></td>
-        	<td th:text="${scan.deviceType}"></td>
-        	<td th:text="${scan.lookupStatus}"></td>
-        </tr>
-      </table>
-      <div th:if="${scan.product}">
- 	    <h4>Product</h4>
- 	    
- 	    <div style="color:gray">Id</div>
-        <div th:text="'&#9;'+${scan.product.id}"></div>
-        
-        <div style="color:gray">Name</div>
-        <div th:text="'&#9;'+${scan.product.name}"></div>
-        
-        <div style="color:gray">SKU</div>
-        <div th:text="'&#9;'+${scan.product.skuId}"></div>
-        
-        <div style="color:gray">Activation Status</div>
-        <div th:text="'&#9;'+${scan.product.activationStatus}"></div>
-        
- 	  </div>
-      <div style="height: 1px; background-color: #DDDDDD"/>
-      <br/>
-      <br/>
-      </div>
-      
-      
+        <h3>Business</h3>
+
+        <table>
+            <tr>
+                <td>
+                    <div style="color:gray">Name</div>
+                    <div th:text="${inspection.biz.name}"></div>
+                </td>
+                <td>
+                    <div style="color:gray">License Number</div>
+                    <div th:text="'&#9;'+${inspection.biz.licenseNumber}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="color:gray">City</div>
+                    <div th:text="'&#9;'+${inspection.biz.city}"></div>
+                </td>
+                <td>
+                    <div style="color:gray">Street</div>
+                    <div th:text="'&#9;'+${inspection.biz.street}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="color:gray">Zip Code</div>
+                    <div th:text="'&#9;'+${inspection.biz.zip}"></div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <h2>Scans</h2>
+        <div th:each="scan : ${inspectionScans[inspection.id]}">
+            <span th:text="'scan id='+${scan.id}" style="color:#cccccc"></span>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Result</th>
+                    <th>Device</th>
+                    <th>Product</th>
+                </tr>
+                <tr>
+                    <td th:text="${scan.date}"></td>
+                    <td th:text="${scan.result}"></td>
+                    <td th:text="${scan.deviceType}"></td>
+                    <td th:text="${scan.lookupStatus}"></td>
+                </tr>
+            </table>
+            <div th:if="${scan.product}">
+                <h4>Product</h4>
+
+                <div style="color:gray">Id</div>
+                <div th:text="'&#9;'+${scan.product.id}"></div>
+
+                <div style="color:gray">Name</div>
+                <div th:text="'&#9;'+${scan.product.name}"></div>
+
+                <div style="color:gray">SKU</div>
+                <div th:text="'&#9;'+${scan.product.skuId}"></div>
+
+                <div style="color:gray">Activation Status</div>
+                <div th:text="'&#9;'+${scan.product.activationStatus}"></div>
+
+            </div>
+            <div style="height: 1px; background-color: #DDDDDD" />
+            <br/>
+            <br/>
+        </div>
+
+
     </div>
-    
-  </body>
+
+</body>
+
 </html>

@@ -53,7 +53,7 @@
         <#if attribute.enumerate>
         <div class="form-group">
           <label class="full">${attribute.name?cap_first}</label>
-          <ui-select ng-model="$ctrl.${entity.name?uncap_first}.${attribute.name}" theme="selectize" sicpa-ui-select>
+          <ui-select ng-model="$ctrl.${entity.name?uncap_first}.${attribute.name}" theme="selectize" hin-ui-select>
             <ui-select-match>{{$ctrl.${entity.name?uncap_first}.${attribute.name}}}</ui-select-match>
             <ui-select-choices repeat="option in $ctrl.${attribute.name}Values">
               <span ng-bind="option"></span>
