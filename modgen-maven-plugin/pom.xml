@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>modgen-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>0.0.16-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<groupId>com.hin.modgen</groupId>
 
 	<name>modgen-maven-plugin</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<modgen.version>0.0.14-SNAPSHOT</modgen.version>
+		<modgen.version>0.0.1-SNAPSHOT</modgen.version>
 		<maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
 	</properties>

@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>modgen-generators</artifactId>
-	<version>0.0.16-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<groupId>com.hin.modgen</groupId>
 
 	<properties>
 		<spring.version>4.2.4.RELEASE</spring.version>
-		<modgen.version>0.0.14-SNAPSHOT</modgen.version>
+		<modgen.version>0.0.1-SNAPSHOT</modgen.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
