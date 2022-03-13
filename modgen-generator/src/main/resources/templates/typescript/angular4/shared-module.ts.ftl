@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { MaterialModule } from 'src/app/core/material/material-component/material.module';
+import { JsonSchemaFormModule } from '@ajsf/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,10 +12,18 @@ import { MaterialModule } from 'src/app/core/material/material-component/materia
   ],
   exports: [
     DialogComponent,
+    JsonSchemaFormModule,
+    MaterialModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    NgxPermissionsModule
   ],
   imports: [
     CommonModule,
+    JsonSchemaFormModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxPermissionsModule.forChild(),
   ]
 })

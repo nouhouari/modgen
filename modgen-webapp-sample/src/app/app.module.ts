@@ -19,6 +19,8 @@ import { EventModule } from './modules/event/event.module';
 import { AppConfigService } from './shared/app-config.service';
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router';
+import { GeneratedEventModule } from './generated/shared/modules/event/event.module';
+import { GeneratedSharedModule } from './generated/shared/modules/shared/shared.module';
 
 export function initialize(keycloak: KeycloakService, appConfig: AppConfigService) {
   return () => appConfig.loadAppConfig().then(() =>

@@ -21,19 +21,18 @@ import { CommonModule } from '@angular/common';
 import { ${entity.name}CreateComponent } from './components/${entity.name?lower_case}-create/${entity.name?lower_case}-create.component';
 import { ${entity.name}EditComponent } from './components/${entity.name?lower_case}-edit/${entity.name?lower_case}-edit.component';
 import { ${entity.name}ViewComponent } from './components/${entity.name?lower_case}-view/${entity.name?lower_case}-view.component';
-import { ${entity.name}Form } from './components/${entity.name?lower_case}-form/${entity.name?lower_case}.form';
 import { ${entity.name}ListComponent } from './components/${entity.name?lower_case}-list/${entity.name?lower_case}.component';
 import { ${entity.name}MapComponent } from './components/${entity.name?lower_case}-map/${entity.name?lower_case}-map.component';
 import { ${entity.name}QuickSearchComponent } from './components/${entity.name?lower_case}-quicksearch/${entity.name?lower_case}-quicksearch.component';
 import { ${entity.name}SearchComponent } from './components/${entity.name?lower_case}-search/${entity.name?lower_case}-search.component';
 import { ${entity.name}UpdateComponent } from './components/${entity.name?lower_case}-update/${entity.name?lower_case}-update.component';
+import { GeneratedSharedModule } from '../shared/shared.module';
 
 
 @NgModule({
 declarations: [
 	${entity.name}CreateComponent,
 	${entity.name}EditComponent,
-	${entity.name}Form,
 	${entity.name}ListComponent,
 	${entity.name}ViewComponent,
 	${entity.name}MapComponent,
@@ -42,7 +41,18 @@ declarations: [
 	${entity.name}UpdateComponent,
 ],
 imports: [
-	CommonModule
+	CommonModule,
+	GeneratedSharedModule
+],
+exports: [
+  ${entity.name}CreateComponent,
+  ${entity.name}EditComponent,
+  ${entity.name}ListComponent,
+  ${entity.name}ViewComponent,
+  ${entity.name}MapComponent,
+  ${entity.name}QuickSearchComponent,
+  ${entity.name}SearchComponent,
+  ${entity.name}UpdateComponent,
 ]
 })
 export class Generated${entity.name?cap_first}Module { }
