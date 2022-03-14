@@ -12,6 +12,19 @@
  */
 package ${package};
 
+<#function convertJavaToObjectType type>
+ <#if type == "String">
+   <#return "String">
+ <#elseif type == "long" || type == "Long">
+    <#return "Long">
+ <#elseif type == "int" || type == "Integer">
+    <#return "Integer">
+ <#elseif type == "double" || type == "Double">
+    <#return "Double">      
+ </#if>
+ <#return type>
+</#function> 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -248,11 +261,19 @@ public class ${entity.name?cap_first}Controller {
     </#if>
     @RequestParam(required=false) ${attribute.type} ${attribute.name?uncap_first}<#if attribute?has_next>, </#if>
     </#list>
+    
     <#list entity.attributes as attribute>
     <#if attribute.reference && attribute.multiplicity == 1>
     ,@RequestParam(required=false) ${attribute.model.primaryAttribute.type} ${attribute.model.name?uncap_first}${attribute.model.primaryAttribute.name?cap_first}
     </#if>
     </#list>
+    
+    <#list entity.referenceAttributes as attribute>
+     <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
+     // Query from ${primaryAttribute.type} ${attribute.name} reference.
+     ,@RequestParam(required=false) ${convertJavaToObjectType(primaryAttribute.type)} ${attribute.name?uncap_first}${primaryAttribute.name?cap_first}
+     </#list>
+   </#list>
     ){
     
     Page<${entity.name?cap_first}DTO> result = this.service.queryResult( page, size <#if entity.hasAnnotation("AUDIT_AWARE")>,
@@ -278,7 +299,14 @@ public class ${entity.name?cap_first}Controller {
       <#if attribute.reference && attribute.multiplicity == 1>
       ,${attribute.model.name?uncap_first}${attribute.model.primaryAttribute.name?cap_first}
       </#if>
-      </#list>);
+      </#list>
+      <#list entity.referenceAttributes as attribute>
+     <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
+     // Query from ${primaryAttribute.type} ${attribute.name} reference.
+     ,${attribute.name?uncap_first}${primaryAttribute.name?cap_first}
+     </#list>
+   </#list>
+   );
     return new ResponseEntity<Page<${entity.name?cap_first}DTO>>(result, HttpStatus.OK);
 
   }	

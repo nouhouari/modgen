@@ -5,6 +5,7 @@ package fr.hin.modelgenerator.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author nourredine
@@ -60,9 +61,15 @@ public class ObjectMetaModel {
 	 * @return the attributes
 	 */
 	public List<Attribute> getAttributesByAnnotation(String annotation) {
-		List<Attribute> result = new ArrayList<>();
-		attributes.stream().filter((a)->a.hasAnnotation(annotation)).forEach((a)->result.add(a));
-		return result;
+		return attributes.stream().filter((a)->a.hasAnnotation(annotation)).collect(Collectors.toList());
+	}
+	
+	/**
+	 * Return list of reference attributes.
+	 * @return
+	 */
+	public List<Attribute> getReferenceAttributes(){
+		return attributes.stream().filter(a->a.isReference()).collect(Collectors.toList());
 	}
 
 	/**
@@ -144,7 +151,6 @@ public class ObjectMetaModel {
 		return false;
 	}
 	
-
 	/**
 	 * @return the type
 	 */

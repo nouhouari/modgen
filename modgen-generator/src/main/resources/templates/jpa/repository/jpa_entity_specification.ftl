@@ -117,23 +117,13 @@ public class ${entity.name}Specification implements Specification<${entity.name}
   </#if>
  
   public ${entity.name}Specification(
-   <#assign relationAdded = false>
-<#--     <#list entity.relations as relation>
-     <#list relation.model.getAttributesByAnnotation("PK") as primaryAttribute>
-     ${primaryAttribute.type} ${relation.model.name?uncap_first}${relation.relationName?cap_first}${primaryAttribute.name?cap_first}  
-     <#assign relationAdded = true>
-     </#list>
-     <#sep>,</#sep>
-   </#list>
--->   
-   <#list entity.attributes as attribute>
-     <#if attribute.reference>
+   <#list entity.referenceAttributes as attribute>
      ${attribute.model.primaryAttribute.type} ${attribute.model.name?uncap_first}${attribute.model.primaryAttribute.name?cap_first}
       <#sep>,</#sep>
-      <#assign relationAdded = true>
-     </#if>
     </#list>
-   <#if searchableAttributes?size gt 0 && relationAdded>,</#if>
+   <#if searchableAttributes?size gt 0 && entity.referenceAttributes?size gt 0>
+   ,
+   </#if>
    <#list searchableAttributes as attribute>
       <#if attribute.type=="Byte" || attribute.type=="Short"|| attribute.type=="Integer"|| attribute.type=="Long"|| attribute.type=="Float"|| attribute.type=="Double"|| attribute.type=="Date">
       ${attribute.type} from${attribute.name?cap_first},

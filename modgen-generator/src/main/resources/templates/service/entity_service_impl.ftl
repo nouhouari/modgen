@@ -159,7 +159,17 @@ public class ${entity.name?cap_first}ServiceImpl extends GenericEntityServiceImp
 	 @Override
 	public Page<${entity.name?cap_first}${dto_suffix}> queryResult(
 			Integer page,
-			Integer size<#if entity.hasAnnotation("AUDIT_AWARE")>, String createdBy, Date createdDate, Date fromCreatedDate, Date toCreatedDate, String modifiedBy, Date modifiedDate, Date fromModifiedDate, Date toModifiedDate</#if>
+			Integer size
+			<#if entity.hasAnnotation("AUDIT_AWARE")>, 
+			String createdBy, 
+			Date createdDate, 
+			Date fromCreatedDate, 
+			Date toCreatedDate, 
+			String modifiedBy, 
+			Date modifiedDate, 
+			Date fromModifiedDate, 
+			Date toModifiedDate
+			</#if>
    <#if searchableAttributes?size gt 0>,</#if>
    <#list searchableAttributes as attribute>
    <#if attribute.type=="Byte" || attribute.type=="Short"|| attribute.type=="Integer"|| attribute.type=="Long"|| attribute.type=="Float"|| attribute.type=="Double"|| attribute.type=="Date">
@@ -177,25 +187,22 @@ ${attribute.type} from${attribute.name?cap_first},
    </#list>
    </#list-->
    
-   <#list entity.attributes as attribute>
-   <#if attribute.reference>
+   <#list entity.referenceAttributes as attribute>
+  
    <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
    // Query from ${primaryAttribute.type} ${attribute.name} reference.
    ,${convertJavaToObjectType(primaryAttribute.type)} ${attribute.name?uncap_first}${primaryAttribute.name?cap_first}
    </#list>
-   </#if>
+
    </#list>){
 		
 		    Page<${entity.name?cap_first}${entity_suffix}> entityPage = repository.findAll(new ${entity.name?cap_first}Specification(<#assign relationAdded = false>
-    <#list entity.attributes as attribute>
-     <#if attribute.reference>
+    <#list entity.referenceAttributes as attribute>
      <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
      // Query from ${primaryAttribute.type} ${attribute.name} reference.
      ${attribute.name?uncap_first}${primaryAttribute.name?cap_first}
-      <#assign relationAdded = true>
       </#list>
       <#sep>,</#sep>
-     </#if>
     </#list>
      
    <#--  <#list entity.relations as relation>
@@ -206,7 +213,9 @@ ${attribute.type} from${attribute.name?cap_first},
     <#sep>,</#sep>
     </#list>
      -->
-    <#if searchableAttributes?size gt 0 && relationAdded>,</#if>
+    <#if entity.referenceAttributes?size gt 0 && searchableAttributes?size gt 0>
+    ,
+    </#if>
     <#list searchableAttributes as attribute>
     <#if attribute.type=="Byte" || attribute.type=="Short"|| attribute.type=="Integer"|| attribute.type=="Long"|| attribute.type=="Float"|| attribute.type=="Double"|| attribute.type=="Date">
     from${attribute.name?cap_first},
