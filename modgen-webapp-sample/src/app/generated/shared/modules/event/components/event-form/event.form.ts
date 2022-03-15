@@ -12,14 +12,20 @@ export class EventForm {
       name: new FormControl(''),
       // description field
       description: new FormControl(''),
-      // location field
-      location: new FormControl(''),
       // startDate field
       startDate: new FormControl(''),
       // organizer field
       organizer: new FormControl(''),
       // endDate field
-      endDate: new FormControl('')
+      endDate: new FormControl(''),
+      // type field
+      type: new FormControl(''),
+      // timeZone field
+      timeZone: new FormControl(''),
+      // format field
+      format: new FormControl(''),
+      // active field
+      active: new FormControl(''),
     });
   }
 

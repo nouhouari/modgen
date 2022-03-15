@@ -79,4 +79,25 @@ export class EventService {
     return this.http.delete<void>('api/event/' + id);
   }
 
+  /**
+   * Add relation with media
+   */
+  public addMediaRelation(
+    id: string,
+    mediaId: string): Observable<string> {
+    return this.http.post<any>('/event/media/add', {
+    'id': id,
+    'mediaId': mediaId});
+  }
+
+  /**
+   * Remove relation with media
+   */
+  public removeMediaRelation(
+    id: string,
+    mediaId: string): Observable<string> {
+    return this.http.post<any>('/event/media/remove', {
+    'id': id,
+    'mediaId': mediaId});
+  }
 }

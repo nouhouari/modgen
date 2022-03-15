@@ -22,10 +22,14 @@ import { ${entity.name}CreateComponent } from './components/${entity.name?lower_
 import { ${entity.name}EditComponent } from './components/${entity.name?lower_case}-edit/${entity.name?lower_case}-edit.component';
 import { ${entity.name}ViewComponent } from './components/${entity.name?lower_case}-view/${entity.name?lower_case}-view.component';
 import { ${entity.name}ListComponent } from './components/${entity.name?lower_case}-list/${entity.name?lower_case}.component';
+<#if entity.getAttributesByAnnotation('LOCATION')?size gt 0>
 import { ${entity.name}MapComponent } from './components/${entity.name?lower_case}-map/${entity.name?lower_case}-map.component';
+</#if>
 import { ${entity.name}QuickSearchComponent } from './components/${entity.name?lower_case}-quicksearch/${entity.name?lower_case}-quicksearch.component';
 import { ${entity.name}SearchComponent } from './components/${entity.name?lower_case}-search/${entity.name?lower_case}-search.component';
 import { ${entity.name}UpdateComponent } from './components/${entity.name?lower_case}-update/${entity.name?lower_case}-update.component';
+import { Generated${entity.name}RoutingModule } from './${entity.name?lower_case}-routing.module';
+import { ${entity.name}Service } from './services/${entity.name?lower_case}.service';
 import { GeneratedSharedModule } from '../shared/shared.module';
 
 
@@ -35,24 +39,32 @@ declarations: [
 	${entity.name}EditComponent,
 	${entity.name}ListComponent,
 	${entity.name}ViewComponent,
+	<#if entity.getAttributesByAnnotation('LOCATION')?size gt 0>
 	${entity.name}MapComponent,
+	</#if>
 	${entity.name}QuickSearchComponent,
 	${entity.name}SearchComponent,
 	${entity.name}UpdateComponent,
 ],
 imports: [
 	CommonModule,
-	GeneratedSharedModule
+	GeneratedSharedModule,
+	//Generated${entity.name}RoutingModule
 ],
 exports: [
   ${entity.name}CreateComponent,
   ${entity.name}EditComponent,
   ${entity.name}ListComponent,
   ${entity.name}ViewComponent,
+  <#if entity.getAttributesByAnnotation('LOCATION')?size gt 0>
   ${entity.name}MapComponent,
+  </#if>
   ${entity.name}QuickSearchComponent,
   ${entity.name}SearchComponent,
   ${entity.name}UpdateComponent,
+],
+providers: [
+	${entity.name}Service
 ]
 })
 export class Generated${entity.name?cap_first}Module { }

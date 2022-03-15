@@ -12,7 +12,7 @@ import { Utils } from 'src/app/utils/utils';
 })
 export class EventEditComponent implements OnInit {
 
-  location: Point;
+  // location: Point;
   event: Event;
 
   constructor(
@@ -28,9 +28,9 @@ export class EventEditComponent implements OnInit {
   }
 
   onSave(event: Event) {
-    if (this.location){
-      event.location = this.location;
-    }
+    // if (this.location){
+    //   event.location = this.location;
+    // }
     console.log(event);
     this.eventService.save(event).subscribe((event) => {
       this.router.navigate([Utils.paths.EVENT.LIST]);
@@ -38,8 +38,8 @@ export class EventEditComponent implements OnInit {
   }
 
   onClickMap($event: Point) {
-    this.location = $event;
-    console.log('Selected location', this.location);  
+    // this.location = $event;
+    // console.log('Selected location', this.location);  
   }
 
 }

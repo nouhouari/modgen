@@ -12,18 +12,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="col col-md-4 col-xl-3 mb-4">
+    <!-- <div class="col col-md-4 col-xl-3 mb-4">
         <app-event-search title="Search Event" (criteria)="onSearch($event)" (clear)="onClear($event)"></app-event-search>
-    </div>
+    </div> -->
     <div class="col">
         <app-event-list [searchCriteria]="searchCriteria" (data)="onDataSource($event)" (update)="onEditRecord($event)" (select)="onSelectRecord($event)" (view)="onView($event)"></app-event-list>
     </div>
-</div>
-
-<div>
-    <app-event-view></app-event-view>
-</div>
-
-<div>
-    <app-event-map [events]="dataSource" [mapMode]="state"></app-event-map>
 </div>

@@ -8,10 +8,6 @@
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput placeholder="Location" id="event_Location" name="Location" formControlName="location">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
           <input matInput [matDatepicker]="StartDate_picker" placeholder="Choose a StartDate" formControlName="startDate">
           <mat-datepicker-toggle matSuffix [for]="StartDate_picker"></mat-datepicker-toggle>
           <mat-datepicker #StartDate_picker></mat-datepicker>
@@ -25,6 +21,29 @@
           <mat-datepicker-toggle matSuffix [for]="EndDate_picker"></mat-datepicker-toggle>
           <mat-datepicker #EndDate_picker></mat-datepicker>
         </mat-form-field><br>
+        <mat-form-field>
+          <mat-label>type</mat-label>
+          <mat-select id="type" formControlName="type">
+            <mat-option *ngFor="let option of  typeValues" [value]="option.value">
+              {{option.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="TimeZone" id="event_TimeZone" name="TimeZone" formControlName="timeZone">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>format</mat-label>
+          <mat-select id="format" formControlName="format">
+            <mat-option *ngFor="let option of  formatValues" [value]="option.value">
+              {{option.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-checkbox id="active" formControlName="active">active</mat-checkbox><br>
   <!-- Extension -->
   <div *ngIf="schema">
     <label>Extension</label><br>

@@ -8,6 +8,11 @@ const routes: Routes = [
     path: 'event',
     loadChildren: () => import('./modules/event/event.module').then(m => m.EventModule),
     data: { breadcrumb: 'Event' }
+  },
+  {
+    path: 'venue',
+    loadChildren: () => import('./modules/venue/venue.module').then(m => m.VenueModule),
+    data: { breadcrumb: 'Venue' }
   }
 ];
 

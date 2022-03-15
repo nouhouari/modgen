@@ -29,7 +29,7 @@ export class EventCreateComponent implements OnInit {
   }
 
   onSave(event: Event) {
-    event.location = this.location;
+    // event.location = this.location;
     event.id = null;
     this.eventService.save(event).subscribe((event) => {
       this.router.navigate([Utils.paths.EVENT.LIST]);

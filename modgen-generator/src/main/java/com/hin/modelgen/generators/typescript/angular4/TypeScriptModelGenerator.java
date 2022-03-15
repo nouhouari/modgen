@@ -9,10 +9,8 @@ import static com.hin.modelgen.generators.GenAppConstants.STR_TODAY;
 import static fr.hin.modelgenerator.GeneratorConstants.STR_ENTITY;
 import static fr.hin.modelgenerator.GeneratorConstants.STR_PACKAGE;
 
-import fr.hin.modelgenerator.GeneratorConstants;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

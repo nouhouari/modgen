@@ -5,6 +5,19 @@
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" id="name" formControlName="name" />
         </mat-form-field>
+        <mat-form-field appearance="standard" id="type">
+          <mat-label>Select type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let option of typeValues" [value]="option.value">{{option.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" id="format">
+          <mat-label>Select format</mat-label>
+          <mat-select formControlName="format">
+            <mat-option *ngFor="let option of formatValues" [value]="option.value">{{option.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-checkbox id="active" formControlName="active">Active</mat-checkbox>
       <button mat-flat-button color="primary" id="event_clear_button" (click)="onClear()">Clear</button>&nbsp;<button  mat-flat-button color="primary" id="event_search_button" (click)="onSearch()">Search</button> 
   </form>
 </div>

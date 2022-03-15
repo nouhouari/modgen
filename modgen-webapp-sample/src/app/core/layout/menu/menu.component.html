@@ -8,39 +8,12 @@
             <mat-expansion-panel [hideToggle]="!menuItem?.child" [disabled]="!menuItem?.child">
                 <mat-expansion-panel-header (click)="redirect(menuItem)">
                     <mat-panel-title class="clickable">
-                        {{ menuItem.name}}
+                        <mat-icon>{{menuItem.icon}}</mat-icon> {{ menuItem.name}}
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <menu [items]="menuItem?.child" (toggleSideNav)="closeNav()"> </menu>
             </mat-expansion-panel>
         </ng-container>
-        <!-- <mat-expansion-panel hideToggle="false" >
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Campaign
-                </mat-panel-title>
-            </mat-expansion-panel-header> -->
-
-
-        <!-- <mat-expansion-panel hideToggle="true">
-            <mat-expansion-panel-header routerLink="./campaign-form" (click)="menuClicked()">
-                <mat-panel-title>
-                     Create Campaign
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-        </mat-expansion-panel>
-        <mat-expansion-panel hideToggle="true">
-            <mat-expansion-panel-header routerLink="./campaign-list" (click)="menuClicked()">
-                <mat-panel-title>
-                    Campaign List
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-        </mat-expansion-panel> -->
-
-        <!-- </mat-expansion-panel> -->
-
     </ng-container>
 
 </mat-accordion>

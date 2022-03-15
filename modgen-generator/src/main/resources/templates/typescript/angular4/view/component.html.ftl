@@ -9,17 +9,17 @@
         </mat-form-field>
         <br>
   	    <#elseif attribute.type = "boolean">
-        <mat-checkbox id="${attribute.name}" formControlName="${attribute.name}">${attribute.name}</mat-checkbox><br>
+        <mat-checkbox id="${attribute.name}" formControlName="${attribute.name}" [disabled]="true">${attribute.name}</mat-checkbox><br>
         <#elseif attribute.type = "Date">
         <mat-form-field>
-          <input matInput readonly[matDatepicker]="${attribute.name?cap_first}_picker" placeholder="Choose a ${attribute.name?cap_first}" formControlName="${attribute.name}">
+          <input matInput readonly [matDatepicker]="${attribute.name?cap_first}_picker" placeholder="Choose a ${attribute.name?cap_first}" formControlName="${attribute.name}">
           <mat-datepicker-toggle matSuffix [for]="${attribute.name?cap_first}_picker"></mat-datepicker-toggle>
-          <mat-datepicker #${attribute.name?cap_first}_picker></mat-datepicker>
+          <mat-datepicker #${attribute.name?cap_first}_picker disabled></mat-datepicker>
         </mat-form-field><br>
         <#elseif attribute.enumerate>
         <mat-form-field>
           <mat-label>${attribute.name}</mat-label>
-          <mat-select id="${attribute.name}" formControlName="${attribute.name}" readonly>
+          <mat-select id="${attribute.name}" formControlName="${attribute.name}" [disabled]="true">
             <mat-option *ngFor="let option of  ${attribute.name}Values" [value]="option.value">
               {{option.label}}
             </mat-option>

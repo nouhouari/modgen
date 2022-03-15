@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Event } from '../../../../models/event.model';
 import { EventForm } from '../event-form/event.form';
+import { EventType } from '../../../../models/eventtype.enum';
+import { EventFormat } from '../../../../models/eventformat.enum';
 import { JsonSchemaFormComponent } from '@ajsf/core';
 
 @Component({
@@ -15,6 +17,30 @@ export class EventEditComponent implements OnInit, OnChanges {
   public data: Event;
   @Output()
   public save: EventEmitter<Event> = new EventEmitter<Event>();
+  public typeValues: any[] = [
+    {
+        label: 'CONFERENCE',
+        value: EventType.CONFERENCE,
+    },
+    {
+        label: 'TRADE_SHOW',
+        value: EventType.TRADE_SHOW,
+    },
+    {
+        label: 'WORKSHOP',
+        value: EventType.WORKSHOP,
+    },
+    ];
+  public formatValues: any[] = [
+    {
+        label: 'ONLINE',
+        value: EventFormat.ONLINE,
+    },
+    {
+        label: 'ONSITE',
+        value: EventFormat.ONSITE,
+    },
+    ];
   @Input()
   public schema: any;
   // JSON extension configuration

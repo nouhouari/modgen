@@ -15,8 +15,10 @@
  * [2021] Nourreddine HOUARI SA
  * All Rights Reserved.
  */
+import { EventType } from './eventtype.enum';
+import { EventFormat } from './eventformat.enum';
+import { Media } from './media.model';
 import { HttpParams } from '@angular/common/http';
-import * as geojson from 'geojson';
 
 
 /**
@@ -30,13 +32,25 @@ export class Event {
    public name: string;
    // Description field
    public description: string;
-  public location: geojson.Point;
    // StartDate field
    public startDate: Date;
    // Organizer field
    public organizer: string;
    // EndDate field
    public endDate: Date;
+   // Type field
+   public type: EventType;
+   // TimeZone field
+   public timeZone: string;
+   // Format field
+   public format: EventFormat;
+   // Active field
+   public active: boolean;
+   // Media field
+   public media: Media[] = [];
+   //public category_event: Category[] = [];
+   //public venue_event: Venue[] = [];
+   //public organizer_event: Organizer[] = [];
    // Version
    public version: number;
    // Extension
@@ -52,11 +66,18 @@ export class Event {
   public size: number;
   public sort: string[];
   public quickSearchQuery: string;
+  public mediaId: string;
 
   public name: string;
+  public type: EventType;
+  public format: EventFormat;
+  public active: boolean;
 
   public clear(): void {
     this.name = null;
+    this.type = null;
+    this.format = null;
+    this.active = null;
   }
   
   /**
@@ -81,6 +102,24 @@ export class Event {
       params = params.set('name', criteria.name);
     }  
       
+    // type search field
+    if (criteria.type){
+      params = params.set('type', criteria.type.toString());
+    }
+      
+    // format search field
+    if (criteria.format){
+      params = params.set('format', criteria.format.toString());
+    }
+      
+    // active search field
+    if (criteria.active){
+      params = params.set('active', String(criteria.active));
+    }
+      
+    if (criteria.mediaId){
+      params = params.set('mediaId', criteria.mediaId);
+    }
     return params;
   }
 }

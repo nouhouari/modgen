@@ -22,10 +22,11 @@ import { EventCreateComponent } from './components/event-create/event-create.com
 import { EventEditComponent } from './components/event-edit/event-edit.component';
 import { EventViewComponent } from './components/event-view/event-view.component';
 import { EventListComponent } from './components/event-list/event.component';
-import { EventMapComponent } from './components/event-map/event-map.component';
 import { EventQuickSearchComponent } from './components/event-quicksearch/event-quicksearch.component';
 import { EventSearchComponent } from './components/event-search/event-search.component';
 import { EventUpdateComponent } from './components/event-update/event-update.component';
+import { GeneratedEventRoutingModule } from './event-routing.module';
+import { EventService } from './services/event.service';
 import { GeneratedSharedModule } from '../shared/shared.module';
 
 
@@ -35,24 +36,26 @@ declarations: [
 	EventEditComponent,
 	EventListComponent,
 	EventViewComponent,
-	EventMapComponent,
 	EventQuickSearchComponent,
 	EventSearchComponent,
 	EventUpdateComponent,
 ],
 imports: [
 	CommonModule,
-	GeneratedSharedModule
+	GeneratedSharedModule,
+	// GeneratedEventRoutingModule
 ],
 exports: [
-	EventCreateComponent,
-	EventEditComponent,
-	EventListComponent,
-	EventViewComponent,
-	EventMapComponent,
-	EventQuickSearchComponent,
-	EventSearchComponent,
-	EventUpdateComponent,
+  EventCreateComponent,
+  EventEditComponent,
+  EventListComponent,
+  EventViewComponent,
+  EventQuickSearchComponent,
+  EventSearchComponent,
+  EventUpdateComponent,
+],
+providers: [
+	EventService
 ]
 })
 export class GeneratedEventModule { }

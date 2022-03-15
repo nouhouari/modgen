@@ -63,6 +63,7 @@ public class TypeScriptComponentGenerator extends AbstractGenerator {
 	private String constantTemplate = "typescript/angular4/app-constant.ts.ftl";
 	private String sharedModuleTemplate = "typescript/angular4/shared-module.ts.ftl";
 	private String moduleTemplate = "typescript/angular4/modules.ts.ftl";
+	private String routeTemplate = "typescript/angular4/routes.module.ts.ftl";
 	
 
 	private String packageName;
@@ -228,6 +229,12 @@ public class TypeScriptComponentGenerator extends AbstractGenerator {
 				outputDir = getOutputDir() + "/shared/modules/" + m.getName().toLowerCase();
 				Utils.checkDirectoryOrCreate(outputDir);
 				Utils.generateTemplate(cfg, input, outputDir,moduleTemplate, fileName);
+				
+				// Routes
+				fileName =  m.getName().toLowerCase() + "-routing.module.ts";
+				outputDir = getOutputDir() + "/shared/modules/" + m.getName().toLowerCase();
+				Utils.checkDirectoryOrCreate(outputDir);
+				Utils.generateTemplate(cfg, input, outputDir,routeTemplate, fileName);
 			}
 		});
 		String fileName = "dialog.component.ts";

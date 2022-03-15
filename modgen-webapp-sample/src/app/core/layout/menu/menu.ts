@@ -3,7 +3,7 @@ import { Utils } from "src/app/utils/utils";
 export interface DynamicMenu {
     name: string,
     url?: string,
-    icon: '',
+    icon: string,
     permissions: string[],
     child?: DynamicMenu[];
 }
@@ -11,20 +11,39 @@ export interface DynamicMenu {
 export const initialNavigation: DynamicMenu[] = [
     {
         name: 'Event',
-        icon: '',
+        icon: 'event_available',
         permissions: ['LIST_EVENT'],
         child: [
             {
                 name: 'Event List',
                 url: Utils.paths.EVENT.LIST,
-                icon: '',
+                icon: 'list',
                 permissions: ['LIST_EVENT'],
             },
             {
                 name: 'New Event',
                 url: Utils.paths.EVENT.NEW,
-                icon: '',
+                icon: 'add',
                 permissions: ['SAVE_EVENT'],
+            },
+        ]
+    },
+    {
+        name: 'Venue',
+        icon: 'business',
+        permissions: ['LIST_VENUE'],
+        child: [
+            {
+                name: 'Venue List',
+                url: Utils.paths.VENUE.LIST,
+                icon: 'list',
+                permissions: ['LIST_VENUE'],
+            },
+            {
+                name: 'New Venue',
+                url: Utils.paths.VENUE.NEW,
+                icon: 'add',
+                permissions: ['SAVE_VENUE'],
             },
         ]
     },

@@ -2,7 +2,7 @@
     <div class="col col-md-6 col-lg-4 offset-lg-2 w-100">
         <app-event-edit [title]="(isUpdate ? 'Update' : 'Create') + ' Event'" [data]="event" (save)="onSave($event)"></app-event-edit>
     </div>
-    <div class="col col-lg-4">
+    <!-- <div class="col col-lg-4">
         <app-event-map (clickOnMap)="onClickMap($event)" [events]="[event]"></app-event-map>
-    </div>
+    </div> -->
 </div>
