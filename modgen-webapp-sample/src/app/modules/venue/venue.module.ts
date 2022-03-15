@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VenueComponent } from './venue/venue.component';
-import { VenueService } from 'src/app/generated/shared/modules/venue/services/venue.service';
+import { MyVenueComponent } from './venue/venue.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/app/core/material/material-component/material.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { MyVenueRoutingModule } from './venue-routing.module';
 import { GeneratedVenueModule } from 'src/app/generated/shared/modules/venue/venue.module';
-import { VenueRoutingModule } from './venue-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    VenueComponent
+    MyVenueComponent
   ],
   imports: [
     // Angular
@@ -24,8 +23,8 @@ import { VenueRoutingModule } from './venue-routing.module';
     MaterialModule,
     NgxPermissionsModule.forChild(),
     // App
-    VenueRoutingModule,
-    VenueModule
+    MyVenueRoutingModule,
+    GeneratedVenueModule
   ]
 })
-export class VenueModule { }
+export class MyVenueModule { }

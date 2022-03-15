@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VenueComponent } from './venue/venue.component';
+import { MyVenueComponent } from './venue/venue.component';
 
 
 const routes: Routes = [
@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'list',
     data: { breadcrumb: 'List' },
-    children: [{ path: '', component: VenueComponent }]
+    children: [{ path: '', component: MyVenueComponent }]
   }
 ];
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class VenueRoutingModule { }
+export class MyVenueRoutingModule { }

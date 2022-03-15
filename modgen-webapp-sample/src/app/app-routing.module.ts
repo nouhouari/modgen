@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'venue',
-    loadChildren: () => import('./modules/venue/venue.module').then(m => m.VenueModule),
+    loadChildren: () => import('./modules/venue/venue.module').then(m => m.MyVenueModule),
     data: { breadcrumb: 'Venue' }
   }
 ];

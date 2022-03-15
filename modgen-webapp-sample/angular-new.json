@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "modgen-webapp": {
+        "modgen-web": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -20,7 +20,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/modgen-webapp",
+                        "outputPath": "dist/modgen-web",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -36,8 +36,8 @@
                             }
                         ],
                         "styles": [
-                            "src/styles.scss",
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                            "src/styles.scss",
                             "./node_modules/leaflet/dist/leaflet.css"
                         ],
                         "scripts": []
@@ -46,8 +46,8 @@
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "2mb",
-                                    "maximumError": "2mb"
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -76,10 +76,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "modgen-webapp:build:production"
+                            "browserTarget": "modgen-web:build:production"
                         },
                         "development": {
-                            "browserTarget": "modgen-webapp:build:development"
+                            "browserTarget": "modgen-web:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "modgen-webapp:build"
+                        "browserTarget": "modgen-web:build"
                     }
                 },
                 "test": {
@@ -103,6 +103,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
                         ],
                         "scripts": []
@@ -111,5 +112,5 @@
             }
         }
     },
-    "defaultProject": "modgen-webapp"
+    "defaultProject": "modgen-web"
 }

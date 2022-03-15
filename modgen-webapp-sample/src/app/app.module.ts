@@ -23,8 +23,8 @@ import { GeneratedEventModule } from './generated/shared/modules/event/event.mod
 import { GeneratedSharedModule } from './generated/shared/modules/shared/shared.module';
 import { GeneratedVenueModule } from './generated/shared/modules/venue/venue.module';
 import { GeneratedVenueRoutingModule } from './generated/shared/modules/venue/venue-routing.module';
-import { VenueModule } from './modules/venue/venue.module';
-import { VenueRoutingModule } from './modules/venue/venue-routing.module';
+import { MyVenueModule } from './modules/venue/venue.module';
+import { MyVenueRoutingModule } from './modules/venue/venue-routing.module';
 
 export function initialize(keycloak: KeycloakService, appConfig: AppConfigService) {
   return () => appConfig.loadAppConfig().then(() =>
@@ -61,7 +61,7 @@ export function initialize(keycloak: KeycloakService, appConfig: AppConfigServic
     BreadcrumbModule,
     // App
     EventModule,
-    VenueModule,
+    MyVenueModule,
     NgxMatomoTrackerModule.forRoot({
       siteId: environment.siteId, // your Matomo's site ID (find it in your Matomo's settings)
       trackerUrl: environment.trackerUrl, // your matomo server root url
