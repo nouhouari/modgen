@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'venue',
     loadChildren: () => import('./modules/venue/venue.module').then(m => m.MyVenueModule),
     data: { breadcrumb: 'Venue' }
+  },
+  {
+    path: 'organizer',
+    loadChildren: () => import('./modules/organizer/organizer.module').then(m => m.MyOrganizerModule),
+    data: { breadcrumb: 'Organizer' }
   }
 ];
 

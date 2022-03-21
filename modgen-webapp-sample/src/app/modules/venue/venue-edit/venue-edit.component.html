@@ -1,0 +1,66 @@
+<form [formGroup]="form" (ngSubmit)="submit()" *ngxPermissionsOnly="['SAVE_VENUE']">
+    <mat-form-field>
+        <input matInput placeholder="Name" id="venue_Name" name="Name" formControlName="name">
+    </mat-form-field>
+    <br>
+
+    <div *ngIf="showPictures">
+        <ngx-dropzone (change)="onSelect($event)" id="pictures" accept="image/jpeg,image/jpg,image/png">
+            <ngx-dropzone-label>Drag&Drop venue pictures here</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+        <mat-progress-bar mode="indeterminate" *ngIf="uploadingFile">
+        </mat-progress-bar>
+        <br>
+        <div fxLayout="row" *ngIf="pictures" fxLayoutGap="10px">
+            <div *ngFor="let m of pictures" class="container">
+                <img [src]="getPath(m)" class="preview">
+                <mat-icon class="icon" (click)="delete(m)">delete_forever</mat-icon>
+            </div>
+        </div>
+        <div *ngIf="(!pictures || pictures.length==0) && files.length == 0 ">
+            <span class="alert alert-warning" role="alert">Venue has no pictures</span>
+        </div>
+    </div>
+
+    <br>
+
+    <angular-editor id="description" [placeholder]="'Venue description here...'" [config]="editorConfig" formControlName="description"></angular-editor>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Address" id="venue_Address" name="Address" formControlName="address">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="City" id="venue_City" name="City" formControlName="city">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Zip code" id="venue_ZipCode" name="ZipCode" formControlName="zipCode">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+            <mat-option *ngFor="let c of countries" [value]="c.code">
+                {{c.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Contact number" id="venue_ContactNumber" name="ContactNumber" formControlName="contactNumber">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Contact email" id="venue_ContactEmail" name="ContactEmail" formControlName="contactEmail">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Venue website" id="venue_Website" name="Website" formControlName="website">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" [disabled]="!form.valid">SUBMIT</button><br>
+</form>

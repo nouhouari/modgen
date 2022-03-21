@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()" *ngxPermissionsOnly="['SAVE_ORGANIZER']">
+    <ngx-dropzone (change)="onSelect($event)" id="picture" accept="image/jpeg,image/jpg,image/png" *ngIf="!readOnly">
+        <ngx-dropzone-label>Drag&Drop organizer picture here</ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+    </ngx-dropzone>
+    <mat-progress-bar mode="indeterminate" *ngIf="uploadingFile">
+    </mat-progress-bar>
+    <br>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center start" *ngIf="form.value.picture">
+        <img [src]="getPath(form.value.picture)" class="preview">
+        <mat-icon class="icon" (click)="deletePicture()" *ngIf="!readOnly">delete_forever</mat-icon>
+    </div>
+    <div>
+        <span class="alert alert-warning" role="alert" *ngIf="!form.value.picture">*Organizer has no picture</span>
+    </div>
+
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="FirstName" id="organizer_FirstName" name="FirstName" formControlName="firstName" [readonly]="readOnly">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="LastName" id="organizer_LastName" name="LastName" formControlName="lastName" [readonly]="readOnly">
+    </mat-form-field>
+    <br>
+    <angular-editor id="description" [placeholder]="'About me...'" [config]="editorConfig" formControlName="aboutme">
+    </angular-editor>
+    <br>
+    <button mat-raised-button color="primary" [disabled]="!form.valid" *ngIf="!readOnly">SUBMIT</button><br>
+</form>

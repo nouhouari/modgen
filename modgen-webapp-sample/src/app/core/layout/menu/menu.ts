@@ -47,5 +47,24 @@ export const initialNavigation: DynamicMenu[] = [
             },
         ]
     },
+    {
+        name: 'Organizer',
+        icon: 'person',
+        permissions: ['LIST_ORGANIZER'],
+        child: [
+            {
+                name: 'Organizer List',
+                url: Utils.paths.ORGANIZER.LIST,
+                icon: 'list',
+                permissions: ['LIST_ORGANIZER'],
+            },
+            {
+                name: 'New Organizer',
+                url: Utils.paths.ORGANIZER.NEW,
+                icon: 'add',
+                permissions: ['SAVE_ORGANIZER'],
+            },
+        ]
+    },
 
 ]

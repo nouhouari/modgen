@@ -1,0 +1,24 @@
+<mat-form-field>
+    <mat-label>Select the venue</mat-label>
+    <input type="text" aria-label="Venue" matInput [matAutocomplete]="auto" [formControl]="venueControl">
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelected($event)">
+        <mat-option *ngFor="let org of filteredOptions | async" [value]="org">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <!-- <img [src]="getPath(org.picture)" class="picture"> -->
+                <mat-icon>place</mat-icon>
+                <span>{{org.name}}</span>
+            </div>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+<div class="row">
+    <div class="col" *ngIf="venue">
+        Current venue
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <!-- <img [src]="getPath(venue.picture)" class="picture"> -->
+            <mat-icon>place</mat-icon>
+            <span>{{venue.name}}</span>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,7 @@ declarations: [
 imports: [
 	CommonModule,
 	GeneratedSharedModule,
-	// GeneratedEventRoutingModule
+	//GeneratedEventRoutingModule
 ],
 exports: [
   EventCreateComponent,

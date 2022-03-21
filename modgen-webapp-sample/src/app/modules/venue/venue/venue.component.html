@@ -1,4 +1,7 @@
-<div>
-
-    <app-venue-list></app-venue-list>
+<div fxLayout="column" fxLayoutAlign="start stretch">
+    <app-venue-quicksearch></app-venue-quicksearch>
+    <button mat-raised-button color="primary" fxFlexAlign="end" routerLink="/venue/new">
+        <mat-icon>add</mat-icon> Add New
+    </button>
+    <app-venue-list [searchCriteria]="venueSearchCriteria" (update)="onUpdate($event)"></app-venue-list>
 </div>

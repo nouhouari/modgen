@@ -4,13 +4,18 @@ import 'package:modgensample/api/event-api.dart';
 import 'package:modgensample/constants.dart';
 import 'package:modgensample/cubit/event-cubit.dart';
 import 'package:modgensample/screens/event_screen.dart';
+import 'package:modgensample/screens/onboarding.dart';
 import 'package:modgensample/state/event-state.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
   String baseUrl = 'http://192.168.0.106:8081/';
   EventAPI api = EventAPI(baseUrl);
   EventCubit eventCubit =
       EventCubit(EventState(loading: LoadingStatus.unknown), api);
+
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(MyApp(eventCubit));
 }
 
@@ -27,6 +32,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: BlocProvider(create: (context) => cubit, child: EventScreen()));
+        home: OnBoardingScreen()
+        // BlocProvider(create: (context) => cubit, child: EventScreen()
+        // )
+        );
   }
 }

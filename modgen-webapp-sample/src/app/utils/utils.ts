@@ -4,15 +4,21 @@ export class Utils {
   static paths = {
     EVENT: {
       NEW: '/event/new',
-      EDIT: '/event/edit',
+      EDIT: '/event/update',
       LIST: '/event/list',
       DETAILS: '/event/details',
     },
     VENUE: {
       NEW: '/venue/create',
-      EDIT: '/venue/edit',
+      EDIT: '/venue/update',
       LIST: '/venue/list',
-      DETAILS: '/venue/view',
+      DETAILS: '/venue/details',
+    },
+    ORGANIZER: {
+      NEW: '/organizer/create',
+      EDIT: '/organizer/update',
+      LIST: '/organizer/list',
+      DETAILS: '/organizer/details',
     }
   }
 }

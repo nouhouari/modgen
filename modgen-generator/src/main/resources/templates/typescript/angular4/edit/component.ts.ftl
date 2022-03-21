@@ -47,10 +47,12 @@ export class ${entity.name}EditComponent implements OnInit, OnChanges {
   constructor(protected formBuilder: FormBuilder) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.form){
+    if (this.form && changes.data){
       this.form.patchValue(changes.data.currentValue);
       <#if entity.hasAnnotation("EXTENDABLE")>
-      this.extensionForm.setFormValues(changes.data.currentValue.extension.extension);
+      if (this.schema){
+        this.extensionForm.setFormValues(changes.data.currentValue.extension.extension);
+      }
       </#if>
     }
   }

@@ -131,12 +131,22 @@ public class ${entity.name?cap_first}Entity${dtoSuffix}TransformerImpl implement
 		</#if>	
 		</#list>
 		<#list entity.relations as relation>
+		// ${relation.multiplicity} ${relation.oppositeMultiplicity}
 		//if(dto.get${relation.model.name?lower_case?cap_first}_${relation.relationName?lower_case}() != null) {
 		//  if(entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}() == null){
 		//  	entity.set${relation.model.name?cap_first}_${relation.relationName?lower_case}(new ${relation.model.name?cap_first}${entity_suffix}());
 		//  }	
 		//  ${relation.model.name?uncap_first}Entity${dtoSuffix}Transformer.transformDtoToEntity(dto.get${relation.model.name?lower_case?cap_first}_${relation.relationName?lower_case}(),entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}());
 		//}
+		<#if relation.multiplicity == -1 && relation.oppositeMultiplicity == 1>
+		// Many2One
+		if(dto.get${relation.model.name?lower_case?cap_first}_${relation.relationName?lower_case}() != null) {
+		  if(entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}() == null){
+		  	entity.set${relation.model.name?cap_first}_${relation.relationName?lower_case}(new ${relation.model.name?cap_first}${entity_suffix}());
+		  }	
+		  ${relation.model.name?uncap_first}Entity${dtoSuffix}Transformer.transformDtoToEntity(dto.get${relation.model.name?lower_case?cap_first}_${relation.relationName?lower_case}(),entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}());
+		}
+		</#if>
 		</#list>
 		 <#if entity.hasAnnotation("VERSIONABLE")>
 		//Set the version
@@ -188,6 +198,13 @@ public class ${entity.name?cap_first}Entity${dtoSuffix}TransformerImpl implement
 		//  ${relation.model.name?uncap_first}Entity${dtoSuffix}Transformer.transformEntityToDto(entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}(),${relation.relationName?lower_case}${dtoSuffix});
 		//  dto.set${relation.model.name?lower_case?cap_first}_${relation.relationName?lower_case}(${relation.relationName?lower_case}${dtoSuffix});	
 		//}
+		<#if relation.multiplicity == -1 && relation.oppositeMultiplicity == 1>
+	    if(entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}() != null) {
+		  ${relation.model.name?cap_first}${dtoSuffix} ${relation.relationName?lower_case}${dtoSuffix}  = new ${relation.model.name?cap_first}${dtoSuffix}();
+		  ${relation.model.name?uncap_first}Entity${dtoSuffix}Transformer.transformEntityToDto(entity.get${relation.model.name?cap_first}_${relation.relationName?lower_case}(),${relation.relationName?lower_case}${dtoSuffix});
+		  dto.set${relation.model.name?lower_case?cap_first}_${relation.relationName?lower_case}(${relation.relationName?lower_case}${dtoSuffix});	
+		}
+		</#if>
 		</#list>
         <#if entity.hasAnnotation("VERSIONABLE")> 
 		//Set the version

@@ -262,12 +262,6 @@ public class ${entity.name?cap_first}Controller {
     @RequestParam(required=false) ${attribute.type} ${attribute.name?uncap_first}<#if attribute?has_next>, </#if>
     </#list>
     
-    <#list entity.attributes as attribute>
-    <#if attribute.reference && attribute.multiplicity == 1>
-    ,@RequestParam(required=false) ${attribute.model.primaryAttribute.type} ${attribute.model.name?uncap_first}${attribute.model.primaryAttribute.name?cap_first}
-    </#if>
-    </#list>
-    
     <#list entity.referenceAttributes as attribute>
      <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
      // Query from ${primaryAttribute.type} ${attribute.name} reference.
@@ -294,11 +288,6 @@ public class ${entity.name?cap_first}Controller {
       ${attribute.name?lower_case}Distance, 
       </#if>
       ${attribute.name?uncap_first}<#if attribute?has_next>, </#if>
-      </#list>
-      <#list entity.attributes as attribute>
-      <#if attribute.reference && attribute.multiplicity == 1>
-      ,${attribute.model.name?uncap_first}${attribute.model.primaryAttribute.name?cap_first}
-      </#if>
       </#list>
       <#list entity.referenceAttributes as attribute>
      <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>

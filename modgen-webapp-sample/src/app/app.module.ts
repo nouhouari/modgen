@@ -16,15 +16,17 @@ import { KeycloakService } from 'keycloak-angular';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { EventModule } from './modules/event/event.module';
-import { AppConfigService } from './shared/app-config.service';
+import { AppConfigService } from './shared/services/app-config.service';
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router';
-import { GeneratedEventModule } from './generated/shared/modules/event/event.module';
-import { GeneratedSharedModule } from './generated/shared/modules/shared/shared.module';
-import { GeneratedVenueModule } from './generated/shared/modules/venue/venue.module';
-import { GeneratedVenueRoutingModule } from './generated/shared/modules/venue/venue-routing.module';
 import { MyVenueModule } from './modules/venue/venue.module';
-import { MyVenueRoutingModule } from './modules/venue/venue-routing.module';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MyOrganizerModule } from './modules/organizer/organizer.module';
+
+registerLocaleData(en);
 
 export function initialize(keycloak: KeycloakService, appConfig: AppConfigService) {
   return () => appConfig.loadAppConfig().then(() =>
@@ -48,7 +50,7 @@ export function initialize(keycloak: KeycloakService, appConfig: AppConfigServic
     HeaderComponent,
     SideNavComponent,
     MenuComponent,
-    LayoutComponent,
+    LayoutComponent
   ],
   imports: [
     // Angular
@@ -66,7 +68,10 @@ export function initialize(keycloak: KeycloakService, appConfig: AppConfigServic
       siteId: environment.siteId, // your Matomo's site ID (find it in your Matomo's settings)
       trackerUrl: environment.trackerUrl, // your matomo server root url
     }),
-    NgxMatomoRouterModule
+    NgxMatomoRouterModule,
+    FormsModule,
+    HttpClientModule,
+    MyOrganizerModule
   ],
   providers: [
     KeycloakService,

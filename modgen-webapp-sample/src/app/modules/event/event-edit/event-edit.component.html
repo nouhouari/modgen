@@ -1,8 +1,76 @@
-<div class="row mt-5" *ngIf="event">
-    <div class="col col-md-6 col-lg-4 offset-lg-2">
-        <app-event-edit title="Update Event" [data]="event" (save)="onSave($event)"></app-event-edit>
+<form [formGroup]="form" (ngSubmit)="submit()" *ngxPermissionsOnly="['SAVE_EVENT']">
+    <div *ngIf="showPictures">
+        <ngx-dropzone (change)="onSelect($event)" id="pictures" accept="image/jpeg,image/jpg,image/png">
+            <ngx-dropzone-label>Drag&Drop event pictures here</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+        </ngx-dropzone>
+        <mat-progress-bar mode="indeterminate" *ngIf="uploadingFile">
+        </mat-progress-bar>
+        <br>
+        <div fxLayout="row" *ngIf="pictures" fxLayoutGap="10px">
+            <div *ngFor="let m of pictures" class="container">
+                <img [src]="getPath(m)" class="preview">
+                <mat-icon class="icon" (click)="delete(m)">delete_forever</mat-icon>
+            </div>
+        </div>
+        <div *ngIf="(!pictures || pictures.length==0) && files.length == 0 ">
+            <span class="alert alert-warning" role="alert">Event has no pictures</span>
+        </div>
     </div>
-    <div class="col col-lg-4">
-        <!-- <app-event-map (clickOnMap)="onClickMap($event)" [events]="[event]"></app-event-map> -->
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Event name" id="event_Name" name="Name" formControlName="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="StartDate_picker" placeholder="Choose a start date" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="StartDate_picker"></mat-datepicker-toggle>
+        <mat-datepicker #StartDate_picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <organizer-select (selected)="onOrganizerSelected($event)" [organizer]="organizer"></organizer-select>
+    <br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="EndDate_picker" placeholder="Choose a end date" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="EndDate_picker"></mat-datepicker-toggle>
+        <mat-datepicker #EndDate_picker></mat-datepicker>
+    </mat-form-field><br>
+    <mat-form-field>
+        <mat-label>Please select the type</mat-label>
+        <mat-select id="type" formControlName="type">
+            <mat-option *ngFor="let option of  typeValues" [value]="option.value">
+                {{option.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <app-timezone controlName="timeZone"></app-timezone>
+    <!-- <mat-form-field> -->
+    <!-- <input matInput placeholder="TimeZone" id="event_TimeZone" name="TimeZone" formControlName="timeZone"> -->
+    <!-- </mat-form-field> -->
+    <br>
+    <mat-form-field>
+        <mat-label>Please select the format</mat-label>
+        <mat-select id="format" formControlName="format">
+            <mat-option *ngFor="let option of  formatValues" [value]="option.value">
+                {{option.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <venue-select (selected)="onVenueSelected($event)" [venue]="venue"></venue-select>
+    <br>
+    <mat-checkbox id="active" formControlName="active">Actived</mat-checkbox>
+    <br>
+    <br>
+    <angular-editor id="description" [placeholder]="'Event description here...'" [config]="editorConfig" formControlName="description"></angular-editor>
+    <br>
+    <div *ngIf="schema">
+        <label>Extension</label><br>
+        <json-schema-form #event_extension [loadExternalAssets]=true framework="material-design" [schema]="schema.schema" [layout]="schema.layout" [options]="options" (isValid)="isExtensionValid($event)">
+        </json-schema-form>
     </div>
-</div>
+    <button mat-raised-button color="primary" [disabled]="!form.valid || (!extensionValid && schema)">SUBMIT</button><br>
+</form>

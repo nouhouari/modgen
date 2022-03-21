@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
 // Plus imports for other components in your app.
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -31,5 +32,13 @@ mat-form-field {
     width: 100%;
 }
 
+.preview {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    object-fit: scale-down;
+    border: 1px lightgray solid;
+    margin: 1rem;
+}
+
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-// @import './theme/material-theme/theme/hin-styleguide.scss';

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col col-md-4 col-xl-3">
+        <app-organizer-quicksearch title="Quick Search" (criteria)="onSearch($event)"></app-organizer-quicksearch>
+    </div>
+    <div class="col py-4 w-100 align-right" *ngxPermissionsOnly="['SAVE_ORGANIZER']">
+        <div>
+            <button mat-flat-button color="accent" routerLink="/organizer/new">
+        <mat-icon>add</mat-icon>
+        New Organizer
+      </button>
+        </div>
+    </div>
+</div>
+<div class="row" *ngxPermissionsOnly="['READ_ORGANIZER']">
+    <div class="col">
+        <organizer-list [searchCriteria]="searchCriteria" (data)="onDataSource($event)" (update)="onEditRecord($event)" (select)="onSelectRecord($event)" (view)="onView($event)"></organizer-list>
+    </div>
+</div>

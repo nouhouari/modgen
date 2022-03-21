@@ -15,6 +15,9 @@
  * [2021] Nourreddine HOUARI SA
  * All Rights Reserved.
  */
+<#list entity.relations as relation>
+import {  ${relation.model.name?cap_first} } from './${relation.model.name?lower_case}.model';
+</#list>
 <#list entity.attributes as attribute>
 <#if attribute.reference>
 import { ${attribute.type?cap_first} } from './${attribute.type?lower_case}.model';
@@ -60,8 +63,8 @@ export class ${entity.name} {
   <#list entity.relations as relation>
   <#if relation.multiplicity=1>
   <#elseif relation.oppositeMultiplicity=1>
-   //public ${relation.model.name?uncap_first}_${relation.relationName?uncap_first}: ${relation.model.name};
-
+   //${relation.model.name?uncap_first} many2one relation field
+   public ${relation.model.name?uncap_first}_${relation.relationName?uncap_first}: ${relation.model.name};
   <#else>
    //public ${relation.model.name?uncap_first}_${relation.relationName?uncap_first}: ${relation.model.name}[] = [];
   </#if>

@@ -14,8 +14,6 @@ export class EventForm {
       description: new FormControl(''),
       // startDate field
       startDate: new FormControl(''),
-      // organizer field
-      organizer: new FormControl(''),
       // endDate field
       endDate: new FormControl(''),
       // type field
@@ -25,7 +23,7 @@ export class EventForm {
       // format field
       format: new FormControl(''),
       // active field
-      active: new FormControl(''),
+      active: new FormControl('')
     });
   }
 

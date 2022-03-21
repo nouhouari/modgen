@@ -15,9 +15,12 @@
  * [2021] Nourreddine HOUARI SA
  * All Rights Reserved.
  */
+import {  Category } from './category.model';
+import {  Venue } from './venue.model';
+import {  Organizer } from './organizer.model';
+import {  Media } from './media.model';
 import { EventType } from './eventtype.enum';
 import { EventFormat } from './eventformat.enum';
-import { Media } from './media.model';
 import { HttpParams } from '@angular/common/http';
 
 
@@ -34,8 +37,6 @@ export class Event {
    public description: string;
    // StartDate field
    public startDate: Date;
-   // Organizer field
-   public organizer: string;
    // EndDate field
    public endDate: Date;
    // Type field
@@ -46,11 +47,11 @@ export class Event {
    public format: EventFormat;
    // Active field
    public active: boolean;
-   // Media field
-   public media: Media[] = [];
    //public category_event: Category[] = [];
-   //public venue_event: Venue[] = [];
-   //public organizer_event: Organizer[] = [];
+   //venue many2one relation field
+   public venue_event: Venue;
+   //organizer many2one relation field
+   public organizer_event: Organizer;
    // Version
    public version: number;
    // Extension
@@ -66,7 +67,6 @@ export class Event {
   public size: number;
   public sort: string[];
   public quickSearchQuery: string;
-  public mediaId: string;
 
   public name: string;
   public type: EventType;
@@ -117,9 +117,6 @@ export class Event {
       params = params.set('active', String(criteria.active));
     }
       
-    if (criteria.mediaId){
-      params = params.set('mediaId', criteria.mediaId);
-    }
     return params;
   }
 }

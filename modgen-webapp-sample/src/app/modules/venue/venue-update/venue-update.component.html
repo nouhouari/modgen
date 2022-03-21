@@ -1,0 +1,16 @@
+<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+
+    <div fxFlex="50%" fxFlexFill>
+        <h3>Update venue</h3>
+        <venue-edit (save)="onSave($event)" [data]="data" [venueLocation]="venueLocation" [showPictures]="true" [pictures]="medias"></venue-edit>
+    </div>
+
+    <div fxFlex="50%" fxFlexFill fxFlexAlign="start">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Search by address, city or country" [(ngModel)]="location">
+            <button matSuffix mat-button (click)="search(location)" [disabled]="!location"><mat-icon >search</mat-icon></button>
+        </mat-form-field>
+        <label>Or click on the map to set the location</label>
+        <app-venue-map (clickOnMap)="onMapClicked($event)" [venues]="mapVenue"></app-venue-map>
+    </div>
+</div>

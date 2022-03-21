@@ -39,6 +39,7 @@ export class ${entity.name} {
   <#list entity.attributes as attribute>
   <#if attribute.reference>
   <#if attribute.multiplicity==-1>
+  // ${attribute}
   // ${attribute.name?cap_first} field
   public ${attribute.name}: ${attribute.type}[] = [];
   <#elseif attribute.multiplicity==1 && attribute.oppositeMultiplicity==1>

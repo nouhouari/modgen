@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Action } from 'src/app/generated/shared/models/action.model';
 import { EventSearchCriteria, Event } from 'src/app/generated/shared/models/event.model';
 import { Page } from 'src/app/generated/shared/models/page.model';
 import { State } from 'src/app/generated/shared/modules/shared/util/app.constant';
@@ -43,7 +44,7 @@ export class EventComponent implements OnInit {
   onEditRecord($event: Event) {
     this.router.navigate([Utils.paths.EVENT.EDIT, $event.id], {
       relativeTo: this.route,
-      state: { data: { breadcrumb: 'Edit', record: $event } }
+      state: { data: { breadcrumb: 'Update', record: $event } }
     })
   }
 

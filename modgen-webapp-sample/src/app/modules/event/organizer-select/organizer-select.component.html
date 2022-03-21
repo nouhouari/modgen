@@ -1,0 +1,22 @@
+<mat-form-field>
+    <mat-label>Select the organizier</mat-label>
+    <input type="text" aria-label="Organizer" matInput [matAutocomplete]="auto" [formControl]="organizerControl">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelected($event)">
+        <mat-option *ngFor="let org of filteredOptions | async" [value]="org">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <img [src]="getPath(org.picture)" class="picture">
+                <span>{{org.firstName}} {{org.lastName}}</span>
+            </div>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+<div class="row">
+    <div class="col" *ngIf="organizer">
+        Current organizer
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <img [src]="getPath(organizer.picture)" class="picture">
+            <span>{{organizer.firstName}} {{organizer.lastName}}</span>
+        </div>
+    </div>
+</div>

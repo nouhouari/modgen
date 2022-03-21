@@ -11,7 +11,7 @@ export class EventCreateComponent implements OnInit {
   @Input()
   public schema: any;
 
-  constructor(private eventService: EventService) { }
+  constructor(protected eventService: EventService) { }
 
   ngOnInit(): void {
   }

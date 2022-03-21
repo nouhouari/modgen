@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+    <mat-label>Please select a timezone</mat-label>
+    <mat-select [formControlName]="controlName">
+        <mat-option *ngFor="let tz of timezones" [value]="tz.timezone">
+            {{tz.label}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

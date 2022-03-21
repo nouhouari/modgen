@@ -13,7 +13,7 @@ export class ${entity.name}CreateComponent implements OnInit {
   public schema: any;
   </#if>
 
-  constructor(private ${entity.name?lower_case}Service: ${entity.name}Service) { }
+  constructor(protected ${entity.name?lower_case}Service: ${entity.name}Service) { }
 
   ngOnInit(): void {
   }
