@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modgensample/cubit/event-cubit.dart';
 import 'package:modgensample/state/event-state.dart';
 import 'package:modgensample/widgets/event_list_widget.dart';
+import 'package:modgensample/widgets/error_widget.dart';
 
 class EventScreen extends StatefulWidget {
   EventScreen({Key? key}) : super(key: key);
@@ -39,18 +40,18 @@ class _EventScreenState extends State<EventScreen> {
           elevation: 0,
           title: Text(
             'Events',
-            style: TextStyle(color: Colors.black87),
+            style: Theme.of(context).textTheme.headline6,
           ),
           actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.black87,
-                )),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.more_vert, color: Colors.black87))
+            // IconButton(
+            //     onPressed: () {},
+            //     icon: Icon(
+            //       Icons.search,
+            //       color: Colors.black87,
+            //     )),
+            // IconButton(
+            //     onPressed: () {},
+            //     icon: Icon(Icons.more_vert, color: Colors.black87))
           ],
         ),
         body: Padding(
@@ -69,7 +70,12 @@ class _EventScreenState extends State<EventScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Unknown status `${state.loading}`'),
+                          CustomErrorWidget(),
+                          Text(
+                            'Unknown status `${state.loading}`',
+                            style:
+                                TextStyle(color: Theme.of(context).errorColor),
+                          ),
                           ElevatedButton(
                               onPressed: () => eventCubit.load(),
                               child: Text('Reload'))

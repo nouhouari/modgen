@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:modgensample/model/page.model.dart';
+import 'package:modgensample/model/event.dart';
 
 class EventAPI {
   String _baseUrl;
@@ -15,8 +15,8 @@ class EventAPI {
   }
 
   // Get the event from its identifier
-  Future<Event> getEventById(String eventId) async {
+  Future<EventPageResult> getEventById(String eventId) async {
     Response pageData = await _dio.get(_baseUrl + 'event/$eventId');
-    return Event.fromJson(pageData.data);
+    return EventPageResult.fromJson(pageData.data);
   }
 }

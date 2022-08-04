@@ -151,7 +151,7 @@ public class ${entity.name}${entity_suffix} {
   <#if attribute.getAnnotation("LONG").hasDetail("LENGTH")>
   @Column(name = "${attribute.name?uncap_first}", length = ${attribute.getAnnotation("LONG").getDetailValue("LENGTH")})
   <#else>
-  @Column(name = "${attribute.name?uncap_first}", length = 10000)
+  @Column(columnDefinition = "text")
   </#if>
   private ${attribute.type} ${attribute.name};
  

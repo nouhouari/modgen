@@ -35,7 +35,6 @@ import ${entityPackage}.${relation.model.name?cap_first}${entity_suffix};
 import ${dtoPackage}.${relation.model.name}${dtoSuffix};
 </#list>
 import org.springframework.stereotype.Component;
-
 import ${dtoPackage}.${entity.name?cap_first}${dtoSuffix};
 import ${package}.GenericEntity${dtoSuffix}Transformer;
 <#list entity.attributes as attribute>

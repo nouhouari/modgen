@@ -148,7 +148,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       color: defaultSkipButtonColor,
       child: InkWell(
         borderRadius: defaultSkipButtonBorderRadius,
-        onTap: () {},
+        onTap: () {
+          Navigator.pushReplacementNamed(context, '/event');
+        },
         child: const Padding(
           padding: defaultSkipButtonPadding,
           child: Text(
@@ -166,11 +168,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       color: defaultProceedButtonColor,
       child: InkWell(
         borderRadius: defaultProceedButtonBorderRadius,
-        onTap: () {},
+        onTap: () {
+          Navigator.pushReplacementNamed(context, '/event');
+        },
         child: const Padding(
           padding: defaultProceedButtonPadding,
           child: Text(
-            'Sign up',
+            'Enter',
             style: defaultProceedButtonTextStyle,
           ),
         ),
@@ -191,7 +195,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         indicator: Indicator(
           indicatorDesign: IndicatorDesign.line(
             lineDesign: LineDesign(
-              lineType: DesignType.line_uniform,
+              lineType: DesignType.line_nonuniform,
             ),
           ),
         ),

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:modgensample/model/page.model.dart';
+import 'package:modgensample/model/event.dart';
 
 enum LoadingStatus { unknown, loading, loading_partial, success, error }
 

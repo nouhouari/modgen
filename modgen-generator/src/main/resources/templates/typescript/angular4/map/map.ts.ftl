@@ -38,7 +38,7 @@ export class ${entity.name}MapComponent implements AfterViewInit, OnChanges {
       center: L.latLng(2.922580414309976, 101.661309704216)
     });
     var openStreetLayer = new L.TileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png',
       {
         minZoom: 3,
         maxZoom: 18,

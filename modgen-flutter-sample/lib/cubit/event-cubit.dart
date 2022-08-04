@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modgensample/api/event-api.dart';
-import 'package:modgensample/model/page.model.dart';
+import 'package:modgensample/model/event.dart';
 import 'package:modgensample/state/event-state.dart';
 
 class EventCubit extends Cubit<EventState> {
@@ -19,8 +19,12 @@ class EventCubit extends Cubit<EventState> {
           allEvents: result.content,
           lastPage: result.last));
     } catch (e) {
-      emit(state.copyWith(
-          result: this.state.result!, loading: LoadingStatus.error));
+      if (this.state.result != null) {
+        emit(state.copyWith(
+            result: this.state.result!, loading: LoadingStatus.error));
+      } else {
+        emit(state.copyWith(loading: LoadingStatus.error));
+      }
     }
   }
 

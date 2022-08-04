@@ -7,34 +7,61 @@ import 'package:modgensample/screens/event_screen.dart';
 import 'package:modgensample/screens/onboarding.dart';
 import 'package:modgensample/state/event-state.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:modgensample/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  String baseUrl = 'http://192.168.0.106:8081/';
-  EventAPI api = EventAPI(baseUrl);
-  EventCubit eventCubit =
-      EventCubit(EventState(loading: LoadingStatus.unknown), api);
+int? initScreen;
+final String initKey = 'initScreen';
 
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  runApp(MyApp(eventCubit));
+
+  // Check if first time
+  final SharedPreferences preferences = await SharedPreferences.getInstance();
+  initScreen = preferences.getInt(initKey);
+  await preferences.setInt(initKey, 1).then((value) => print);
+
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  final EventCubit cubit;
-  MyApp(this.cubit);
+class MyApp extends StatefulWidget {
+  MyApp();
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late EventCubit cubit;
+
+  void initialization() async {
+    String baseUrl = BACKEND_URL;
+    EventAPI api = EventAPI(baseUrl);
+    cubit = EventCubit(EventState(loading: LoadingStatus.unknown), api);
+    // Wait and stop splashscreen
+    await Future.delayed(const Duration(milliseconds: 500));
+    FlutterNativeSplash.remove();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initialization();
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     print('Running with backend url=' + BACKEND_URL);
     return MaterialApp(
-        title: 'Wasabih Event',
-        theme: ThemeData(
-          primarySwatch: Colors.red,
-        ),
-        home: OnBoardingScreen()
-        // BlocProvider(create: (context) => cubit, child: EventScreen()
-        // )
-        );
+        title: 'Wasabih',
+        theme: myTheme,
+        initialRoute: (initScreen == 0 || initScreen == null) ? '/' : '/event',
+        routes: {
+          '/': (context) => const OnBoardingScreen(),
+          '/event': (context) =>
+              BlocProvider(create: (context) => cubit, child: EventScreen())
+        });
   }
 }

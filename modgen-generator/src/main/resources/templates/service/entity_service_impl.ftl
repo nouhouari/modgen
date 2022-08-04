@@ -86,6 +86,8 @@ import ${repositoryPackage}.${entity.name?cap_first}QuickSearchSpecification;
 public class ${entity.name?cap_first}ServiceImpl extends GenericEntityServiceImpl<${entity.name?cap_first}${dto_suffix}, ${entity.name?cap_first}${entity_suffix}> implements ${entity.name?cap_first}Service {
 	
 	//PRIVATE MEMBERS
+	@Autowired(required = false)
+	private ${entity.name?cap_first}QueryConstraintListener ${entity.name?uncap_first}QueryConstraintListener;
 	@Autowired
 	private ${entity.name?cap_first}${entity_repository_suffix} repository;
 	<#assign myHash = { }>
@@ -195,37 +197,42 @@ ${attribute.type} from${attribute.name?cap_first},
    </#list>
 
    </#list>){
-		
-		    Page<${entity.name?cap_first}${entity_suffix}> entityPage = repository.findAll(new ${entity.name?cap_first}Specification(<#assign relationAdded = false>
-    <#list entity.referenceAttributes as attribute>
-     <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
-     // Query from ${primaryAttribute.type} ${attribute.name} reference.
-     ${attribute.name?uncap_first}${primaryAttribute.name?cap_first}
-      </#list>
-      <#sep>,</#sep>
-    </#list>
-     
-   <#--  <#list entity.relations as relation>
-    <#list relation.model.getAttributesByAnnotation("PK") as primaryAttribute>
-    ${relation.model.name?uncap_first}${relation.relationName?cap_first}${primaryAttribute.name?cap_first}
-    <#assign relationAdded = true>
-    </#list>
-    <#sep>,</#sep>
-    </#list>
-     -->
-    <#if entity.referenceAttributes?size gt 0 && searchableAttributes?size gt 0>
-    ,
-    </#if>
-    <#list searchableAttributes as attribute>
-    <#if attribute.type=="Byte" || attribute.type=="Short"|| attribute.type=="Integer"|| attribute.type=="Long"|| attribute.type=="Float"|| attribute.type=="Double"|| attribute.type=="Date">
-    from${attribute.name?cap_first},
-    to${attribute.name?cap_first},
-    <#elseif attribute.type = "String" && attribute.location>
-    ${attribute.name?lower_case}Distance, 
-    </#if>
-    ${attribute.name?lower_case}<#if attribute?has_next>, </#if>
-    </#list>),
+   
+			${entity.name?cap_first}Specification spec = new ${entity.name?cap_first}Specification(<#assign relationAdded = false>
+		    <#list entity.referenceAttributes as attribute>
+		     <#list attribute.model.getAttributesByAnnotation("PK") as primaryAttribute>
+		     // Query from ${primaryAttribute.type} ${attribute.name} reference.
+		     ${attribute.name?uncap_first}${primaryAttribute.name?cap_first}
+		      </#list>
+		      <#sep>,</#sep>
+		    </#list>
+		     
+		   <#--  <#list entity.relations as relation>
+		    <#list relation.model.getAttributesByAnnotation("PK") as primaryAttribute>
+		    ${relation.model.name?uncap_first}${relation.relationName?cap_first}${primaryAttribute.name?cap_first}
+		    <#assign relationAdded = true>
+		    </#list>
+		    <#sep>,</#sep>
+		    </#list>
+		     -->
+		    <#if entity.referenceAttributes?size gt 0 && searchableAttributes?size gt 0>
+		    ,
+		    </#if>
+		    <#list searchableAttributes as attribute>
+		    <#if attribute.type=="Byte" || attribute.type=="Short"|| attribute.type=="Integer"|| attribute.type=="Long"|| attribute.type=="Float"|| attribute.type=="Double"|| attribute.type=="Date">
+		    from${attribute.name?cap_first},
+		    to${attribute.name?cap_first},
+		    <#elseif attribute.type = "String" && attribute.location>
+		    ${attribute.name?lower_case}Distance, 
+		    </#if>
+		    ${attribute.name?lower_case}<#if attribute?has_next>, </#if>
+		    </#list>);
+		    if (${entity.name?uncap_first}QueryConstraintListener != null){
+		    	spec.setQueryListener(${entity.name?uncap_first}QueryConstraintListener);
+		    }
+		    Page<${entity.name?cap_first}${entity_suffix}> entityPage = repository.findAll(spec,
 		    PageRequest.of(page, size));
+		    
 		    
 		    return entityPage.map((entity) -> {
 			  ${entity.name?cap_first}DTO dto = new ${entity.name?cap_first}DTO();
