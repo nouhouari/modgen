@@ -270,7 +270,7 @@ public class ${entity.name?cap_first}Controller {
    </#list>
     ){
     
-    Page<${entity.name?cap_first}DTO> result = this.service.queryResult( page, size <#if entity.hasAnnotation("AUDIT_AWARE")>,
+    Page<${entity.name?cap_first}DTO> result = this.service.queryResult( page, size, sort <#if entity.hasAnnotation("AUDIT_AWARE")>,
       createdBy, 
       createdDate, 
       fromCreatedDate, 

@@ -110,7 +110,8 @@ public interface ${entity.name?cap_first}Service extends GenericEntityService<${
 	 */
 	Page<${entity.name?cap_first}${dto_suffix}> queryResult(
 			Integer page,
-			Integer size<#if entity.hasAnnotation("AUDIT_AWARE")>, String createdBy, Date createdDate, Date fromCreatedDate, Date toCreatedDate, String modifiedBy, Date modifiedDate, Date fromModifiedDate, Date toModifiedDate</#if>
+			Integer size,
+			String sort<#if entity.hasAnnotation("AUDIT_AWARE")>, String createdBy, Date createdDate, Date fromCreatedDate, Date toCreatedDate, String modifiedBy, Date modifiedDate, Date fromModifiedDate, Date toModifiedDate</#if>
    <#if searchableAttributes?size gt 0>,</#if>
    <#list searchableAttributes as attribute>
    <#if attribute.type=="Byte" || attribute.type=="Short"|| attribute.type=="Integer"|| attribute.type=="Long"|| attribute.type=="Float"|| attribute.type=="Double"|| attribute.type=="Date">

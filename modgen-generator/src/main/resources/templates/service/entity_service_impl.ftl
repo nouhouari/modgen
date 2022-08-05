@@ -161,8 +161,9 @@ public class ${entity.name?cap_first}ServiceImpl extends GenericEntityServiceImp
 	 @Override
 	public Page<${entity.name?cap_first}${dto_suffix}> queryResult(
 			Integer page,
-			Integer size
-			<#if entity.hasAnnotation("AUDIT_AWARE")>, 
+			Integer size, 
+			String sort
+			<#if entity.hasAnnotation("AUDIT_AWARE")>,
 			String createdBy, 
 			Date createdDate, 
 			Date fromCreatedDate, 
@@ -230,8 +231,17 @@ ${attribute.type} from${attribute.name?cap_first},
 		    if (${entity.name?uncap_first}QueryConstraintListener != null){
 		    	spec.setQueryListener(${entity.name?uncap_first}QueryConstraintListener);
 		    }
+		    PageRequest pageRequest = null;
+            // Check the sort parameters
+            if (sort != null) {
+              Sort s = buildSort(sort);
+              pageRequest = PageRequest.of(page, size, s);
+            } else {
+              // without sorting
+              pageRequest = PageRequest.of(page, size);
+            }
 		    Page<${entity.name?cap_first}${entity_suffix}> entityPage = repository.findAll(spec,
-		    PageRequest.of(page, size));
+		    pageRequest);
 		    
 		    
 		    return entityPage.map((entity) -> {
