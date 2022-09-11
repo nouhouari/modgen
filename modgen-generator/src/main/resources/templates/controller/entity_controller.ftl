@@ -83,9 +83,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  */
 @RestController
-@RequestMapping("/${entity.name?lower_case}")
+@RequestMapping(${entity.name?cap_first}Controller.REQUEST_MAPPING_PATH)
 @CrossOrigin(value={"*"})
 public class ${entity.name?cap_first}Controller {
+
+  public static final String REQUEST_MAPPING_PATH = "/${entity.name?lower_case}";
   
   @Autowired
   private ${entity.name?cap_first}Service service;

@@ -30,6 +30,7 @@ export class ${entity.name}ListComponent implements OnInit, OnChanges {
   @Output()
   data: EventEmitter<${entity.name}[]> = new EventEmitter<${entity.name}[]>();
   displayedColumns: string[] = [ <#list entity.attributes as attribute><#if !attribute.reference && !attribute.hasAnnotation('ListHide')&& !attribute.hasAnnotation("PK")>'${attribute.name}',</#if></#list>'action'];
+  @Input()
   pageSizeOptions:any[]=[5, 10, 20, 30, 50];
   private currentPageSize: number;
 
@@ -47,6 +48,8 @@ export class ${entity.name}ListComponent implements OnInit, OnChanges {
    */
   ngOnChanges(changes: SimpleChanges): void {
   	this.searchCriteria = changes.searchCriteria.currentValue;
+  	this.searchCriteria.size = this.pageSizeOptions[0];
+    this.currentPageSize = this.pageSizeOptions[0];
   	this.load();
   }
   
